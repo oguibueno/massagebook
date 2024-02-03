@@ -1,20 +1,21 @@
 import 'package:go_router/go_router.dart';
+import 'package:massagebook/features/business/presentation/presentation.dart';
 
 final GoRouter routerConfig = GoRouter(
   routes: [
     GoRoute(
       path: '/',
       builder: (_, __) {
-        return const BusinessHomeScreen();
+        return const BusinessesPage();
       },
-      routes: [
-        GoRoute(
-          path: 'business-details',
-          builder: (_, __) {
-            return const BusinessDetailsScreen();
-          },
-        ),
-      ],
+      // routes: [
+      //   GoRoute(
+      //     path: 'business-details',
+      //     builder: (_, __) {
+      //       return const BusinessDetailsScreen();
+      //     },
+      //   ),
+      // ],
     ),
   ],
 );

@@ -7,6 +7,7 @@ class GetBusinessesDataUseCase {
 
   final BusinessRepository businessesDataRepository;
 
-  Future<Either<Failure, BusinessesData>> call(int offset) =>
-      businessesDataRepository.get(offset);
+  Future<Either<Failure, BusinessesData>> call(int offset) async {
+    return await businessesDataRepository.get(offset);
+  }
 }
