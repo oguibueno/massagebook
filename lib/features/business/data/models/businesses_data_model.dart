@@ -23,6 +23,7 @@ class DataItemModel with _$DataItemModel {
     @JsonKey(name: 'id') String? idModel,
     @JsonKey(name: 'type') String? typeModel,
     @JsonKey(name: 'attributes') DataAttributesModel? attributesModel,
+    @JsonKey(name: 'relationships') RelationshipsModel? relationshipsModel,
     @JsonKey(name: 'links') LinksModel? linksModel,
   }) = _DataItemModel;
 
@@ -153,10 +154,12 @@ class IncludedModel with _$IncludedModel {
 class IncludedAttributesModel with _$IncludedAttributesModel {
   const factory IncludedAttributesModel({
     @JsonKey(name: 'name') String? nameModel,
-    @JsonKey(name: 'categoryType') String? categoryTypeModel,
+    @JsonKey(name: 'category_type') String? categoryTypeModel,
     @JsonKey(name: 'description') String? descriptionModel,
-    @JsonKey(name: 'isApproved') bool? isApprovedModel,
+    @JsonKey(name: 'is_approved') bool? isApprovedModel,
     @JsonKey(name: 'slug') String? slugModel,
+    @JsonKey(name: 'photo_url') String? photoUrlModel,
+    @JsonKey(name: 'thumbnail_photo_url') String? thumbnailPhotoModel,
   }) = _IncludedAttributesModel;
 
   factory IncludedAttributesModel.fromJson(Map<String, dynamic> json) =>
@@ -184,23 +187,42 @@ class SelfModel with _$SelfModel {
 }
 
 @freezed
-class IncludedDataItemModel with _$IncludedDataItemModel {
-  const factory IncludedDataItemModel({
-    @JsonKey(name: 'id') String? idModel,
-    @JsonKey(name: 'type') String? typeModel,
-    @JsonKey(name: 'attributes') IncludedAttributesModel? attributesModel,
-  }) = _IncludedDataItemModel;
+class RelationshipsItemModel with _$RelationshipsItemModel {
+  const factory RelationshipsItemModel({
+    @JsonKey(name: 'relationships') RelationshipsModel? relationshipsMOdel,
+  }) = _RelationshipsItemModel;
 
-  factory IncludedDataItemModel.fromJson(Map<String, dynamic> json) =>
-      _$IncludedDataItemModelFromJson(json);
+  factory RelationshipsItemModel.fromJson(Map<String, dynamic> json) =>
+      _$RelationshipsItemModelFromJson(json);
 }
 
 @freezed
-class ServiceCategoriesModel with _$ServiceCategoriesModel {
-  const factory ServiceCategoriesModel({
-    @JsonKey(name: 'data') List<IncludedDataItemModel>? dataModel,
-  }) = _ServiceCategoriesModel;
+class RelationshipsModel with _$RelationshipsModel {
+  const factory RelationshipsModel({
+    @JsonKey(name: 'primary_photo') PrimaryPhotoModel? primaryPhotoModel,
+  }) = _RelationshipsModel;
 
-  factory ServiceCategoriesModel.fromJson(Map<String, dynamic> json) =>
-      _$ServiceCategoriesModelFromJson(json);
+  factory RelationshipsModel.fromJson(Map<String, dynamic> json) =>
+      _$RelationshipsModelFromJson(json);
+}
+
+@freezed
+class PrimaryPhotoModel with _$PrimaryPhotoModel {
+  const factory PrimaryPhotoModel({
+    @JsonKey(name: 'data') RelationshipsDataModel? dataModel,
+  }) = _PrimaryPhotoModel;
+
+  factory PrimaryPhotoModel.fromJson(Map<String, dynamic> json) =>
+      _$PrimaryPhotoModelFromJson(json);
+}
+
+@freezed
+class RelationshipsDataModel with _$RelationshipsDataModel {
+  const factory RelationshipsDataModel({
+    @JsonKey(name: 'id') String? idModel,
+    @JsonKey(name: 'type') String? typeModel,
+  }) = _RelationshipsDataModel;
+
+  factory RelationshipsDataModel.fromJson(Map<String, dynamic> json) =>
+      _$RelationshipsDataModelFromJson(json);
 }

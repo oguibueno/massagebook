@@ -563,6 +563,7 @@ mixin _$DataItem {
   String? get id => throw _privateConstructorUsedError;
   String? get type => throw _privateConstructorUsedError;
   DataAttributes? get attributes => throw _privateConstructorUsedError;
+  Relationships? get relationships => throw _privateConstructorUsedError;
   Links? get links => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -576,9 +577,14 @@ abstract class $DataItemCopyWith<$Res> {
       _$DataItemCopyWithImpl<$Res, DataItem>;
   @useResult
   $Res call(
-      {String? id, String? type, DataAttributes? attributes, Links? links});
+      {String? id,
+      String? type,
+      DataAttributes? attributes,
+      Relationships? relationships,
+      Links? links});
 
   $DataAttributesCopyWith<$Res>? get attributes;
+  $RelationshipsCopyWith<$Res>? get relationships;
   $LinksCopyWith<$Res>? get links;
 }
 
@@ -598,6 +604,7 @@ class _$DataItemCopyWithImpl<$Res, $Val extends DataItem>
     Object? id = freezed,
     Object? type = freezed,
     Object? attributes = freezed,
+    Object? relationships = freezed,
     Object? links = freezed,
   }) {
     return _then(_value.copyWith(
@@ -613,6 +620,10 @@ class _$DataItemCopyWithImpl<$Res, $Val extends DataItem>
           ? _value.attributes
           : attributes // ignore: cast_nullable_to_non_nullable
               as DataAttributes?,
+      relationships: freezed == relationships
+          ? _value.relationships
+          : relationships // ignore: cast_nullable_to_non_nullable
+              as Relationships?,
       links: freezed == links
           ? _value.links
           : links // ignore: cast_nullable_to_non_nullable
@@ -629,6 +640,18 @@ class _$DataItemCopyWithImpl<$Res, $Val extends DataItem>
 
     return $DataAttributesCopyWith<$Res>(_value.attributes!, (value) {
       return _then(_value.copyWith(attributes: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $RelationshipsCopyWith<$Res>? get relationships {
+    if (_value.relationships == null) {
+      return null;
+    }
+
+    return $RelationshipsCopyWith<$Res>(_value.relationships!, (value) {
+      return _then(_value.copyWith(relationships: value) as $Val);
     });
   }
 
@@ -654,10 +677,16 @@ abstract class _$$DataItemImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String? id, String? type, DataAttributes? attributes, Links? links});
+      {String? id,
+      String? type,
+      DataAttributes? attributes,
+      Relationships? relationships,
+      Links? links});
 
   @override
   $DataAttributesCopyWith<$Res>? get attributes;
+  @override
+  $RelationshipsCopyWith<$Res>? get relationships;
   @override
   $LinksCopyWith<$Res>? get links;
 }
@@ -676,6 +705,7 @@ class __$$DataItemImplCopyWithImpl<$Res>
     Object? id = freezed,
     Object? type = freezed,
     Object? attributes = freezed,
+    Object? relationships = freezed,
     Object? links = freezed,
   }) {
     return _then(_$DataItemImpl(
@@ -691,6 +721,10 @@ class __$$DataItemImplCopyWithImpl<$Res>
           ? _value.attributes
           : attributes // ignore: cast_nullable_to_non_nullable
               as DataAttributes?,
+      relationships: freezed == relationships
+          ? _value.relationships
+          : relationships // ignore: cast_nullable_to_non_nullable
+              as Relationships?,
       links: freezed == links
           ? _value.links
           : links // ignore: cast_nullable_to_non_nullable
@@ -702,7 +736,8 @@ class __$$DataItemImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$DataItemImpl implements _DataItem {
-  const _$DataItemImpl({this.id, this.type, this.attributes, this.links});
+  const _$DataItemImpl(
+      {this.id, this.type, this.attributes, this.relationships, this.links});
 
   @override
   final String? id;
@@ -711,11 +746,13 @@ class _$DataItemImpl implements _DataItem {
   @override
   final DataAttributes? attributes;
   @override
+  final Relationships? relationships;
+  @override
   final Links? links;
 
   @override
   String toString() {
-    return 'DataItem(id: $id, type: $type, attributes: $attributes, links: $links)';
+    return 'DataItem(id: $id, type: $type, attributes: $attributes, relationships: $relationships, links: $links)';
   }
 
   @override
@@ -727,11 +764,14 @@ class _$DataItemImpl implements _DataItem {
             (identical(other.type, type) || other.type == type) &&
             (identical(other.attributes, attributes) ||
                 other.attributes == attributes) &&
+            (identical(other.relationships, relationships) ||
+                other.relationships == relationships) &&
             (identical(other.links, links) || other.links == links));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, type, attributes, links);
+  int get hashCode =>
+      Object.hash(runtimeType, id, type, attributes, relationships, links);
 
   @JsonKey(ignore: true)
   @override
@@ -745,6 +785,7 @@ abstract class _DataItem implements DataItem {
       {final String? id,
       final String? type,
       final DataAttributes? attributes,
+      final Relationships? relationships,
       final Links? links}) = _$DataItemImpl;
 
   @override
@@ -753,6 +794,8 @@ abstract class _DataItem implements DataItem {
   String? get type;
   @override
   DataAttributes? get attributes;
+  @override
+  Relationships? get relationships;
   @override
   Links? get links;
   @override
@@ -2355,6 +2398,8 @@ mixin _$IncludedAttributes {
   String? get description => throw _privateConstructorUsedError;
   bool? get isApproved => throw _privateConstructorUsedError;
   String? get slug => throw _privateConstructorUsedError;
+  String? get photo => throw _privateConstructorUsedError;
+  String? get thumbnail => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $IncludedAttributesCopyWith<IncludedAttributes> get copyWith =>
@@ -2372,7 +2417,9 @@ abstract class $IncludedAttributesCopyWith<$Res> {
       String? categoryType,
       String? description,
       bool? isApproved,
-      String? slug});
+      String? slug,
+      String? photo,
+      String? thumbnail});
 }
 
 /// @nodoc
@@ -2393,6 +2440,8 @@ class _$IncludedAttributesCopyWithImpl<$Res, $Val extends IncludedAttributes>
     Object? description = freezed,
     Object? isApproved = freezed,
     Object? slug = freezed,
+    Object? photo = freezed,
+    Object? thumbnail = freezed,
   }) {
     return _then(_value.copyWith(
       name: freezed == name
@@ -2415,6 +2464,14 @@ class _$IncludedAttributesCopyWithImpl<$Res, $Val extends IncludedAttributes>
           ? _value.slug
           : slug // ignore: cast_nullable_to_non_nullable
               as String?,
+      photo: freezed == photo
+          ? _value.photo
+          : photo // ignore: cast_nullable_to_non_nullable
+              as String?,
+      thumbnail: freezed == thumbnail
+          ? _value.thumbnail
+          : thumbnail // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -2432,7 +2489,9 @@ abstract class _$$IncludedAttributesImplCopyWith<$Res>
       String? categoryType,
       String? description,
       bool? isApproved,
-      String? slug});
+      String? slug,
+      String? photo,
+      String? thumbnail});
 }
 
 /// @nodoc
@@ -2451,6 +2510,8 @@ class __$$IncludedAttributesImplCopyWithImpl<$Res>
     Object? description = freezed,
     Object? isApproved = freezed,
     Object? slug = freezed,
+    Object? photo = freezed,
+    Object? thumbnail = freezed,
   }) {
     return _then(_$IncludedAttributesImpl(
       name: freezed == name
@@ -2473,6 +2534,14 @@ class __$$IncludedAttributesImplCopyWithImpl<$Res>
           ? _value.slug
           : slug // ignore: cast_nullable_to_non_nullable
               as String?,
+      photo: freezed == photo
+          ? _value.photo
+          : photo // ignore: cast_nullable_to_non_nullable
+              as String?,
+      thumbnail: freezed == thumbnail
+          ? _value.thumbnail
+          : thumbnail // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -2485,7 +2554,9 @@ class _$IncludedAttributesImpl implements _IncludedAttributes {
       this.categoryType,
       this.description,
       this.isApproved,
-      this.slug});
+      this.slug,
+      this.photo,
+      this.thumbnail});
 
   @override
   final String? name;
@@ -2497,10 +2568,14 @@ class _$IncludedAttributesImpl implements _IncludedAttributes {
   final bool? isApproved;
   @override
   final String? slug;
+  @override
+  final String? photo;
+  @override
+  final String? thumbnail;
 
   @override
   String toString() {
-    return 'IncludedAttributes(name: $name, categoryType: $categoryType, description: $description, isApproved: $isApproved, slug: $slug)';
+    return 'IncludedAttributes(name: $name, categoryType: $categoryType, description: $description, isApproved: $isApproved, slug: $slug, photo: $photo, thumbnail: $thumbnail)';
   }
 
   @override
@@ -2515,12 +2590,15 @@ class _$IncludedAttributesImpl implements _IncludedAttributes {
                 other.description == description) &&
             (identical(other.isApproved, isApproved) ||
                 other.isApproved == isApproved) &&
-            (identical(other.slug, slug) || other.slug == slug));
+            (identical(other.slug, slug) || other.slug == slug) &&
+            (identical(other.photo, photo) || other.photo == photo) &&
+            (identical(other.thumbnail, thumbnail) ||
+                other.thumbnail == thumbnail));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, name, categoryType, description, isApproved, slug);
+  int get hashCode => Object.hash(runtimeType, name, categoryType, description,
+      isApproved, slug, photo, thumbnail);
 
   @JsonKey(ignore: true)
   @override
@@ -2536,7 +2614,9 @@ abstract class _IncludedAttributes implements IncludedAttributes {
       final String? categoryType,
       final String? description,
       final bool? isApproved,
-      final String? slug}) = _$IncludedAttributesImpl;
+      final String? slug,
+      final String? photo,
+      final String? thumbnail}) = _$IncludedAttributesImpl;
 
   @override
   String? get name;
@@ -2548,6 +2628,10 @@ abstract class _IncludedAttributes implements IncludedAttributes {
   bool? get isApproved;
   @override
   String? get slug;
+  @override
+  String? get photo;
+  @override
+  String? get thumbnail;
   @override
   @JsonKey(ignore: true)
   _$$IncludedAttributesImplCopyWith<_$IncludedAttributesImpl> get copyWith =>
@@ -2795,5 +2879,411 @@ abstract class _Self implements Self {
   @override
   @JsonKey(ignore: true)
   _$$SelfImplCopyWith<_$SelfImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+mixin _$Relationships {
+  PrimaryPhoto? get primaryPhoto => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $RelationshipsCopyWith<Relationships> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $RelationshipsCopyWith<$Res> {
+  factory $RelationshipsCopyWith(
+          Relationships value, $Res Function(Relationships) then) =
+      _$RelationshipsCopyWithImpl<$Res, Relationships>;
+  @useResult
+  $Res call({PrimaryPhoto? primaryPhoto});
+
+  $PrimaryPhotoCopyWith<$Res>? get primaryPhoto;
+}
+
+/// @nodoc
+class _$RelationshipsCopyWithImpl<$Res, $Val extends Relationships>
+    implements $RelationshipsCopyWith<$Res> {
+  _$RelationshipsCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? primaryPhoto = freezed,
+  }) {
+    return _then(_value.copyWith(
+      primaryPhoto: freezed == primaryPhoto
+          ? _value.primaryPhoto
+          : primaryPhoto // ignore: cast_nullable_to_non_nullable
+              as PrimaryPhoto?,
+    ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $PrimaryPhotoCopyWith<$Res>? get primaryPhoto {
+    if (_value.primaryPhoto == null) {
+      return null;
+    }
+
+    return $PrimaryPhotoCopyWith<$Res>(_value.primaryPhoto!, (value) {
+      return _then(_value.copyWith(primaryPhoto: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$RelationshipsImplCopyWith<$Res>
+    implements $RelationshipsCopyWith<$Res> {
+  factory _$$RelationshipsImplCopyWith(
+          _$RelationshipsImpl value, $Res Function(_$RelationshipsImpl) then) =
+      __$$RelationshipsImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({PrimaryPhoto? primaryPhoto});
+
+  @override
+  $PrimaryPhotoCopyWith<$Res>? get primaryPhoto;
+}
+
+/// @nodoc
+class __$$RelationshipsImplCopyWithImpl<$Res>
+    extends _$RelationshipsCopyWithImpl<$Res, _$RelationshipsImpl>
+    implements _$$RelationshipsImplCopyWith<$Res> {
+  __$$RelationshipsImplCopyWithImpl(
+      _$RelationshipsImpl _value, $Res Function(_$RelationshipsImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? primaryPhoto = freezed,
+  }) {
+    return _then(_$RelationshipsImpl(
+      primaryPhoto: freezed == primaryPhoto
+          ? _value.primaryPhoto
+          : primaryPhoto // ignore: cast_nullable_to_non_nullable
+              as PrimaryPhoto?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$RelationshipsImpl implements _Relationships {
+  const _$RelationshipsImpl({this.primaryPhoto});
+
+  @override
+  final PrimaryPhoto? primaryPhoto;
+
+  @override
+  String toString() {
+    return 'Relationships(primaryPhoto: $primaryPhoto)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$RelationshipsImpl &&
+            (identical(other.primaryPhoto, primaryPhoto) ||
+                other.primaryPhoto == primaryPhoto));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, primaryPhoto);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$RelationshipsImplCopyWith<_$RelationshipsImpl> get copyWith =>
+      __$$RelationshipsImplCopyWithImpl<_$RelationshipsImpl>(this, _$identity);
+}
+
+abstract class _Relationships implements Relationships {
+  const factory _Relationships({final PrimaryPhoto? primaryPhoto}) =
+      _$RelationshipsImpl;
+
+  @override
+  PrimaryPhoto? get primaryPhoto;
+  @override
+  @JsonKey(ignore: true)
+  _$$RelationshipsImplCopyWith<_$RelationshipsImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+mixin _$PrimaryPhoto {
+  RelationshipsData? get data => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $PrimaryPhotoCopyWith<PrimaryPhoto> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $PrimaryPhotoCopyWith<$Res> {
+  factory $PrimaryPhotoCopyWith(
+          PrimaryPhoto value, $Res Function(PrimaryPhoto) then) =
+      _$PrimaryPhotoCopyWithImpl<$Res, PrimaryPhoto>;
+  @useResult
+  $Res call({RelationshipsData? data});
+
+  $RelationshipsDataCopyWith<$Res>? get data;
+}
+
+/// @nodoc
+class _$PrimaryPhotoCopyWithImpl<$Res, $Val extends PrimaryPhoto>
+    implements $PrimaryPhotoCopyWith<$Res> {
+  _$PrimaryPhotoCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? data = freezed,
+  }) {
+    return _then(_value.copyWith(
+      data: freezed == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as RelationshipsData?,
+    ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $RelationshipsDataCopyWith<$Res>? get data {
+    if (_value.data == null) {
+      return null;
+    }
+
+    return $RelationshipsDataCopyWith<$Res>(_value.data!, (value) {
+      return _then(_value.copyWith(data: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$PrimaryPhotoImplCopyWith<$Res>
+    implements $PrimaryPhotoCopyWith<$Res> {
+  factory _$$PrimaryPhotoImplCopyWith(
+          _$PrimaryPhotoImpl value, $Res Function(_$PrimaryPhotoImpl) then) =
+      __$$PrimaryPhotoImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({RelationshipsData? data});
+
+  @override
+  $RelationshipsDataCopyWith<$Res>? get data;
+}
+
+/// @nodoc
+class __$$PrimaryPhotoImplCopyWithImpl<$Res>
+    extends _$PrimaryPhotoCopyWithImpl<$Res, _$PrimaryPhotoImpl>
+    implements _$$PrimaryPhotoImplCopyWith<$Res> {
+  __$$PrimaryPhotoImplCopyWithImpl(
+      _$PrimaryPhotoImpl _value, $Res Function(_$PrimaryPhotoImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? data = freezed,
+  }) {
+    return _then(_$PrimaryPhotoImpl(
+      data: freezed == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as RelationshipsData?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$PrimaryPhotoImpl implements _PrimaryPhoto {
+  const _$PrimaryPhotoImpl({this.data});
+
+  @override
+  final RelationshipsData? data;
+
+  @override
+  String toString() {
+    return 'PrimaryPhoto(data: $data)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PrimaryPhotoImpl &&
+            (identical(other.data, data) || other.data == data));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, data);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$PrimaryPhotoImplCopyWith<_$PrimaryPhotoImpl> get copyWith =>
+      __$$PrimaryPhotoImplCopyWithImpl<_$PrimaryPhotoImpl>(this, _$identity);
+}
+
+abstract class _PrimaryPhoto implements PrimaryPhoto {
+  const factory _PrimaryPhoto({final RelationshipsData? data}) =
+      _$PrimaryPhotoImpl;
+
+  @override
+  RelationshipsData? get data;
+  @override
+  @JsonKey(ignore: true)
+  _$$PrimaryPhotoImplCopyWith<_$PrimaryPhotoImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+mixin _$RelationshipsData {
+  String? get id => throw _privateConstructorUsedError;
+  String? get type => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $RelationshipsDataCopyWith<RelationshipsData> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $RelationshipsDataCopyWith<$Res> {
+  factory $RelationshipsDataCopyWith(
+          RelationshipsData value, $Res Function(RelationshipsData) then) =
+      _$RelationshipsDataCopyWithImpl<$Res, RelationshipsData>;
+  @useResult
+  $Res call({String? id, String? type});
+}
+
+/// @nodoc
+class _$RelationshipsDataCopyWithImpl<$Res, $Val extends RelationshipsData>
+    implements $RelationshipsDataCopyWith<$Res> {
+  _$RelationshipsDataCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = freezed,
+    Object? type = freezed,
+  }) {
+    return _then(_value.copyWith(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
+      type: freezed == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$RelationshipsDataImplCopyWith<$Res>
+    implements $RelationshipsDataCopyWith<$Res> {
+  factory _$$RelationshipsDataImplCopyWith(_$RelationshipsDataImpl value,
+          $Res Function(_$RelationshipsDataImpl) then) =
+      __$$RelationshipsDataImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String? id, String? type});
+}
+
+/// @nodoc
+class __$$RelationshipsDataImplCopyWithImpl<$Res>
+    extends _$RelationshipsDataCopyWithImpl<$Res, _$RelationshipsDataImpl>
+    implements _$$RelationshipsDataImplCopyWith<$Res> {
+  __$$RelationshipsDataImplCopyWithImpl(_$RelationshipsDataImpl _value,
+      $Res Function(_$RelationshipsDataImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = freezed,
+    Object? type = freezed,
+  }) {
+    return _then(_$RelationshipsDataImpl(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
+      type: freezed == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$RelationshipsDataImpl implements _RelationshipsData {
+  const _$RelationshipsDataImpl({this.id, this.type});
+
+  @override
+  final String? id;
+  @override
+  final String? type;
+
+  @override
+  String toString() {
+    return 'RelationshipsData(id: $id, type: $type)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$RelationshipsDataImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.type, type) || other.type == type));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, id, type);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$RelationshipsDataImplCopyWith<_$RelationshipsDataImpl> get copyWith =>
+      __$$RelationshipsDataImplCopyWithImpl<_$RelationshipsDataImpl>(
+          this, _$identity);
+}
+
+abstract class _RelationshipsData implements RelationshipsData {
+  const factory _RelationshipsData({final String? id, final String? type}) =
+      _$RelationshipsDataImpl;
+
+  @override
+  String? get id;
+  @override
+  String? get type;
+  @override
+  @JsonKey(ignore: true)
+  _$$RelationshipsDataImplCopyWith<_$RelationshipsDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

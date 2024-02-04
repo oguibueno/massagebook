@@ -28,15 +28,22 @@ class BusinessesPage extends StatelessWidget {
                         childCount: data.data?.length ?? 0,
                         (context, index) {
                           final attributes = data.data?[index].attributes;
+                          final businessData = data.data?[index];
 
                           if (attributes == null) return const SizedBox();
 
-                          return ListTile(
-                            title: Text(
-                              attributes.businessName ?? '',
-                            ),
-                            subtitle: Text(attributes.description ?? ''),
-                            leading: Text(attributes.address1 ?? ''),
+                          final primaryPhoto = data.included
+                              ?.firstWhere((e) =>
+                                  e.type == 'pu-photos' &&
+                                  e.id ==
+                                      businessData?.relationships?.primaryPhoto
+                                          ?.data?.id)
+                              .attributes
+                              ?.photo;
+
+                          return BusinessCard(
+                            businessName: attributes.businessName ?? '',
+                            thumbnailUrl: primaryPhoto,
                           );
                         },
                       ),

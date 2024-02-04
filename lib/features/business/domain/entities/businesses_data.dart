@@ -36,6 +36,7 @@ class DataItem with _$DataItem {
     String? id,
     String? type,
     DataAttributes? attributes,
+    Relationships? relationships,
     Links? links,
   }) = _DataItem;
 }
@@ -124,6 +125,8 @@ class IncludedAttributes with _$IncludedAttributes {
     String? description,
     bool? isApproved,
     String? slug,
+    String? photo,
+    String? thumbnail,
   }) = _IncludedAttributes;
 }
 
@@ -139,4 +142,26 @@ class Self with _$Self {
   const factory Self({
     String? href,
   }) = _Self;
+}
+
+@freezed
+class Relationships with _$Relationships {
+  const factory Relationships({
+    PrimaryPhoto? primaryPhoto,
+  }) = _Relationships;
+}
+
+@freezed
+class PrimaryPhoto with _$PrimaryPhoto {
+  const factory PrimaryPhoto({
+    RelationshipsData? data,
+  }) = _PrimaryPhoto;
+}
+
+@freezed
+class RelationshipsData with _$RelationshipsData {
+  const factory RelationshipsData({
+    String? id,
+    String? type,
+  }) = _RelationshipsData;
 }

@@ -37,6 +37,8 @@ extension IncludedAttributesToEntity on IncludedAttributesModel {
         description: descriptionModel ?? '',
         isApproved: isApprovedModel ?? false,
         slug: slugModel ?? '',
+        photo: photoUrlModel ?? '',
+        thumbnail: thumbnailPhotoModel ?? '',
       );
 }
 
@@ -45,6 +47,7 @@ extension DataItemToEntity on DataItemModel {
         id: idModel ?? '',
         type: typeModel ?? '',
         attributes: attributesModel?.toEntity(),
+        relationships: relationshipsModel?.toEntity(),
         links: linksModel?.toEntity(),
       );
 }
@@ -125,4 +128,20 @@ extension LinksToEntity on LinksModel {
 
 extension SelfToEntity on SelfModel {
   Self toEntity() => Self(href: hrefModel ?? '');
+}
+
+extension RelationshipsToEntity on RelationshipsModel {
+  Relationships toEntity() =>
+      Relationships(primaryPhoto: primaryPhotoModel?.toEntity());
+}
+
+extension PrimaryPhotoToEntity on PrimaryPhotoModel {
+  PrimaryPhoto toEntity() => PrimaryPhoto(data: dataModel?.toEntity());
+}
+
+extension RelationshipsDataToEntity on RelationshipsDataModel {
+  RelationshipsData toEntity() => RelationshipsData(
+        id: idModel ?? '',
+        type: typeModel ?? '',
+      );
 }

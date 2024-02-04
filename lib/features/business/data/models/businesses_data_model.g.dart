@@ -36,6 +36,10 @@ _$DataItemModelImpl _$$DataItemModelImplFromJson(Map<String, dynamic> json) =>
           ? null
           : DataAttributesModel.fromJson(
               json['attributes'] as Map<String, dynamic>),
+      relationshipsModel: json['relationships'] == null
+          ? null
+          : RelationshipsModel.fromJson(
+              json['relationships'] as Map<String, dynamic>),
       linksModel: json['links'] == null
           ? null
           : LinksModel.fromJson(json['links'] as Map<String, dynamic>),
@@ -46,6 +50,7 @@ Map<String, dynamic> _$$DataItemModelImplToJson(_$DataItemModelImpl instance) =>
       'id': instance.idModel,
       'type': instance.typeModel,
       'attributes': instance.attributesModel,
+      'relationships': instance.relationshipsModel,
       'links': instance.linksModel,
     };
 
@@ -246,20 +251,24 @@ _$IncludedAttributesModelImpl _$$IncludedAttributesModelImplFromJson(
         Map<String, dynamic> json) =>
     _$IncludedAttributesModelImpl(
       nameModel: json['name'] as String?,
-      categoryTypeModel: json['categoryType'] as String?,
+      categoryTypeModel: json['category_type'] as String?,
       descriptionModel: json['description'] as String?,
-      isApprovedModel: json['isApproved'] as bool?,
+      isApprovedModel: json['is_approved'] as bool?,
       slugModel: json['slug'] as String?,
+      photoUrlModel: json['photo_url'] as String?,
+      thumbnailPhotoModel: json['thumbnail_photo_url'] as String?,
     );
 
 Map<String, dynamic> _$$IncludedAttributesModelImplToJson(
         _$IncludedAttributesModelImpl instance) =>
     <String, dynamic>{
       'name': instance.nameModel,
-      'categoryType': instance.categoryTypeModel,
+      'category_type': instance.categoryTypeModel,
       'description': instance.descriptionModel,
-      'isApproved': instance.isApprovedModel,
+      'is_approved': instance.isApprovedModel,
       'slug': instance.slugModel,
+      'photo_url': instance.photoUrlModel,
+      'thumbnail_photo_url': instance.thumbnailPhotoModel,
     };
 
 _$LinksModelImpl _$$LinksModelImplFromJson(Map<String, dynamic> json) =>
@@ -284,36 +293,61 @@ Map<String, dynamic> _$$SelfModelImplToJson(_$SelfModelImpl instance) =>
       'href': instance.hrefModel,
     };
 
-_$IncludedDataItemModelImpl _$$IncludedDataItemModelImplFromJson(
+_$RelationshipsItemModelImpl _$$RelationshipsItemModelImplFromJson(
         Map<String, dynamic> json) =>
-    _$IncludedDataItemModelImpl(
-      idModel: json['id'] as String?,
-      typeModel: json['type'] as String?,
-      attributesModel: json['attributes'] == null
+    _$RelationshipsItemModelImpl(
+      relationshipsMOdel: json['relationships'] == null
           ? null
-          : IncludedAttributesModel.fromJson(
-              json['attributes'] as Map<String, dynamic>),
+          : RelationshipsModel.fromJson(
+              json['relationships'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$IncludedDataItemModelImplToJson(
-        _$IncludedDataItemModelImpl instance) =>
+Map<String, dynamic> _$$RelationshipsItemModelImplToJson(
+        _$RelationshipsItemModelImpl instance) =>
+    <String, dynamic>{
+      'relationships': instance.relationshipsMOdel,
+    };
+
+_$RelationshipsModelImpl _$$RelationshipsModelImplFromJson(
+        Map<String, dynamic> json) =>
+    _$RelationshipsModelImpl(
+      primaryPhotoModel: json['primary_photo'] == null
+          ? null
+          : PrimaryPhotoModel.fromJson(
+              json['primary_photo'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$$RelationshipsModelImplToJson(
+        _$RelationshipsModelImpl instance) =>
+    <String, dynamic>{
+      'primary_photo': instance.primaryPhotoModel,
+    };
+
+_$PrimaryPhotoModelImpl _$$PrimaryPhotoModelImplFromJson(
+        Map<String, dynamic> json) =>
+    _$PrimaryPhotoModelImpl(
+      dataModel: json['data'] == null
+          ? null
+          : RelationshipsDataModel.fromJson(
+              json['data'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$$PrimaryPhotoModelImplToJson(
+        _$PrimaryPhotoModelImpl instance) =>
+    <String, dynamic>{
+      'data': instance.dataModel,
+    };
+
+_$RelationshipsDataModelImpl _$$RelationshipsDataModelImplFromJson(
+        Map<String, dynamic> json) =>
+    _$RelationshipsDataModelImpl(
+      idModel: json['id'] as String?,
+      typeModel: json['type'] as String?,
+    );
+
+Map<String, dynamic> _$$RelationshipsDataModelImplToJson(
+        _$RelationshipsDataModelImpl instance) =>
     <String, dynamic>{
       'id': instance.idModel,
       'type': instance.typeModel,
-      'attributes': instance.attributesModel,
-    };
-
-_$ServiceCategoriesModelImpl _$$ServiceCategoriesModelImplFromJson(
-        Map<String, dynamic> json) =>
-    _$ServiceCategoriesModelImpl(
-      dataModel: (json['data'] as List<dynamic>?)
-          ?.map(
-              (e) => IncludedDataItemModel.fromJson(e as Map<String, dynamic>))
-          .toList(),
-    );
-
-Map<String, dynamic> _$$ServiceCategoriesModelImplToJson(
-        _$ServiceCategoriesModelImpl instance) =>
-    <String, dynamic>{
-      'data': instance.dataModel,
     };
