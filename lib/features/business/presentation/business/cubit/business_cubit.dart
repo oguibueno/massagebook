@@ -25,10 +25,12 @@ class BusinessCubit extends Cubit<BusinessState> {
 
     emit(BusinessState(currentState, true));
 
+    final offset = currentState == null
+        ? 0
+        : (currentState.meta?.offset ?? 0) + (currentState.meta?.limit ?? 0);
+
     final data = await _getBusinessesDataUseCase(
-      page: currentState == null
-          ? 0
-          : (currentState.meta?.offset ?? 0) + (currentState.meta?.limit ?? 0),
+      offset: offset,
       coordinates: coordinates,
     );
 
@@ -38,7 +40,7 @@ class BusinessCubit extends Cubit<BusinessState> {
         final newState = currentState == null
             ? right
             : right.copyWith(
-                data: [...currentState.data!, ...right.data!],
+                data: [...currentState.data!, ...right.data!].toList(),
               );
 
         emit(BusinessState(newState, false));

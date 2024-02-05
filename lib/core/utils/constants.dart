@@ -8,6 +8,10 @@ class CoreConstants {
 
   static const int limit = 5;
 
+  static const String puBusinesses = 'pu-businesses';
+  static const String serviceCategories = 'service-categories';
+  static const String puPhotos = 'pu-photos';
+
   static const List<String> categories = [
     'service_categories',
     'primary_photo',

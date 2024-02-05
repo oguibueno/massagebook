@@ -2885,6 +2885,8 @@ abstract class _Self implements Self {
 /// @nodoc
 mixin _$Relationships {
   PrimaryPhoto? get primaryPhoto => throw _privateConstructorUsedError;
+  ServiceCategories? get serviceCategories =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $RelationshipsCopyWith<Relationships> get copyWith =>
@@ -2897,9 +2899,10 @@ abstract class $RelationshipsCopyWith<$Res> {
           Relationships value, $Res Function(Relationships) then) =
       _$RelationshipsCopyWithImpl<$Res, Relationships>;
   @useResult
-  $Res call({PrimaryPhoto? primaryPhoto});
+  $Res call({PrimaryPhoto? primaryPhoto, ServiceCategories? serviceCategories});
 
   $PrimaryPhotoCopyWith<$Res>? get primaryPhoto;
+  $ServiceCategoriesCopyWith<$Res>? get serviceCategories;
 }
 
 /// @nodoc
@@ -2916,12 +2919,17 @@ class _$RelationshipsCopyWithImpl<$Res, $Val extends Relationships>
   @override
   $Res call({
     Object? primaryPhoto = freezed,
+    Object? serviceCategories = freezed,
   }) {
     return _then(_value.copyWith(
       primaryPhoto: freezed == primaryPhoto
           ? _value.primaryPhoto
           : primaryPhoto // ignore: cast_nullable_to_non_nullable
               as PrimaryPhoto?,
+      serviceCategories: freezed == serviceCategories
+          ? _value.serviceCategories
+          : serviceCategories // ignore: cast_nullable_to_non_nullable
+              as ServiceCategories?,
     ) as $Val);
   }
 
@@ -2936,6 +2944,18 @@ class _$RelationshipsCopyWithImpl<$Res, $Val extends Relationships>
       return _then(_value.copyWith(primaryPhoto: value) as $Val);
     });
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ServiceCategoriesCopyWith<$Res>? get serviceCategories {
+    if (_value.serviceCategories == null) {
+      return null;
+    }
+
+    return $ServiceCategoriesCopyWith<$Res>(_value.serviceCategories!, (value) {
+      return _then(_value.copyWith(serviceCategories: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -2946,10 +2966,12 @@ abstract class _$$RelationshipsImplCopyWith<$Res>
       __$$RelationshipsImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({PrimaryPhoto? primaryPhoto});
+  $Res call({PrimaryPhoto? primaryPhoto, ServiceCategories? serviceCategories});
 
   @override
   $PrimaryPhotoCopyWith<$Res>? get primaryPhoto;
+  @override
+  $ServiceCategoriesCopyWith<$Res>? get serviceCategories;
 }
 
 /// @nodoc
@@ -2964,12 +2986,17 @@ class __$$RelationshipsImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? primaryPhoto = freezed,
+    Object? serviceCategories = freezed,
   }) {
     return _then(_$RelationshipsImpl(
       primaryPhoto: freezed == primaryPhoto
           ? _value.primaryPhoto
           : primaryPhoto // ignore: cast_nullable_to_non_nullable
               as PrimaryPhoto?,
+      serviceCategories: freezed == serviceCategories
+          ? _value.serviceCategories
+          : serviceCategories // ignore: cast_nullable_to_non_nullable
+              as ServiceCategories?,
     ));
   }
 }
@@ -2977,14 +3004,16 @@ class __$$RelationshipsImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$RelationshipsImpl implements _Relationships {
-  const _$RelationshipsImpl({this.primaryPhoto});
+  const _$RelationshipsImpl({this.primaryPhoto, this.serviceCategories});
 
   @override
   final PrimaryPhoto? primaryPhoto;
+  @override
+  final ServiceCategories? serviceCategories;
 
   @override
   String toString() {
-    return 'Relationships(primaryPhoto: $primaryPhoto)';
+    return 'Relationships(primaryPhoto: $primaryPhoto, serviceCategories: $serviceCategories)';
   }
 
   @override
@@ -2993,11 +3022,13 @@ class _$RelationshipsImpl implements _Relationships {
         (other.runtimeType == runtimeType &&
             other is _$RelationshipsImpl &&
             (identical(other.primaryPhoto, primaryPhoto) ||
-                other.primaryPhoto == primaryPhoto));
+                other.primaryPhoto == primaryPhoto) &&
+            (identical(other.serviceCategories, serviceCategories) ||
+                other.serviceCategories == serviceCategories));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, primaryPhoto);
+  int get hashCode => Object.hash(runtimeType, primaryPhoto, serviceCategories);
 
   @JsonKey(ignore: true)
   @override
@@ -3007,11 +3038,14 @@ class _$RelationshipsImpl implements _Relationships {
 }
 
 abstract class _Relationships implements Relationships {
-  const factory _Relationships({final PrimaryPhoto? primaryPhoto}) =
-      _$RelationshipsImpl;
+  const factory _Relationships(
+      {final PrimaryPhoto? primaryPhoto,
+      final ServiceCategories? serviceCategories}) = _$RelationshipsImpl;
 
   @override
   PrimaryPhoto? get primaryPhoto;
+  @override
+  ServiceCategories? get serviceCategories;
   @override
   @JsonKey(ignore: true)
   _$$RelationshipsImplCopyWith<_$RelationshipsImpl> get copyWith =>
@@ -3286,4 +3320,270 @@ abstract class _RelationshipsData implements RelationshipsData {
   @JsonKey(ignore: true)
   _$$RelationshipsDataImplCopyWith<_$RelationshipsDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+mixin _$ServiceCategories {
+  List<ServiceCategoriesData>? get data => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $ServiceCategoriesCopyWith<ServiceCategories> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ServiceCategoriesCopyWith<$Res> {
+  factory $ServiceCategoriesCopyWith(
+          ServiceCategories value, $Res Function(ServiceCategories) then) =
+      _$ServiceCategoriesCopyWithImpl<$Res, ServiceCategories>;
+  @useResult
+  $Res call({List<ServiceCategoriesData>? data});
+}
+
+/// @nodoc
+class _$ServiceCategoriesCopyWithImpl<$Res, $Val extends ServiceCategories>
+    implements $ServiceCategoriesCopyWith<$Res> {
+  _$ServiceCategoriesCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? data = freezed,
+  }) {
+    return _then(_value.copyWith(
+      data: freezed == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as List<ServiceCategoriesData>?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$ServiceCategoriesImplCopyWith<$Res>
+    implements $ServiceCategoriesCopyWith<$Res> {
+  factory _$$ServiceCategoriesImplCopyWith(_$ServiceCategoriesImpl value,
+          $Res Function(_$ServiceCategoriesImpl) then) =
+      __$$ServiceCategoriesImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({List<ServiceCategoriesData>? data});
+}
+
+/// @nodoc
+class __$$ServiceCategoriesImplCopyWithImpl<$Res>
+    extends _$ServiceCategoriesCopyWithImpl<$Res, _$ServiceCategoriesImpl>
+    implements _$$ServiceCategoriesImplCopyWith<$Res> {
+  __$$ServiceCategoriesImplCopyWithImpl(_$ServiceCategoriesImpl _value,
+      $Res Function(_$ServiceCategoriesImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? data = freezed,
+  }) {
+    return _then(_$ServiceCategoriesImpl(
+      data: freezed == data
+          ? _value._data
+          : data // ignore: cast_nullable_to_non_nullable
+              as List<ServiceCategoriesData>?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ServiceCategoriesImpl implements _ServiceCategories {
+  const _$ServiceCategoriesImpl({final List<ServiceCategoriesData>? data})
+      : _data = data;
+
+  final List<ServiceCategoriesData>? _data;
+  @override
+  List<ServiceCategoriesData>? get data {
+    final value = _data;
+    if (value == null) return null;
+    if (_data is EqualUnmodifiableListView) return _data;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  @override
+  String toString() {
+    return 'ServiceCategories(data: $data)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ServiceCategoriesImpl &&
+            const DeepCollectionEquality().equals(other._data, _data));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_data));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ServiceCategoriesImplCopyWith<_$ServiceCategoriesImpl> get copyWith =>
+      __$$ServiceCategoriesImplCopyWithImpl<_$ServiceCategoriesImpl>(
+          this, _$identity);
+}
+
+abstract class _ServiceCategories implements ServiceCategories {
+  const factory _ServiceCategories({final List<ServiceCategoriesData>? data}) =
+      _$ServiceCategoriesImpl;
+
+  @override
+  List<ServiceCategoriesData>? get data;
+  @override
+  @JsonKey(ignore: true)
+  _$$ServiceCategoriesImplCopyWith<_$ServiceCategoriesImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+mixin _$ServiceCategoriesData {
+  String? get id => throw _privateConstructorUsedError;
+  String? get type => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $ServiceCategoriesDataCopyWith<ServiceCategoriesData> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ServiceCategoriesDataCopyWith<$Res> {
+  factory $ServiceCategoriesDataCopyWith(ServiceCategoriesData value,
+          $Res Function(ServiceCategoriesData) then) =
+      _$ServiceCategoriesDataCopyWithImpl<$Res, ServiceCategoriesData>;
+  @useResult
+  $Res call({String? id, String? type});
+}
+
+/// @nodoc
+class _$ServiceCategoriesDataCopyWithImpl<$Res,
+        $Val extends ServiceCategoriesData>
+    implements $ServiceCategoriesDataCopyWith<$Res> {
+  _$ServiceCategoriesDataCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = freezed,
+    Object? type = freezed,
+  }) {
+    return _then(_value.copyWith(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
+      type: freezed == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$ServiceCategoriesDataImplCopyWith<$Res>
+    implements $ServiceCategoriesDataCopyWith<$Res> {
+  factory _$$ServiceCategoriesDataImplCopyWith(
+          _$ServiceCategoriesDataImpl value,
+          $Res Function(_$ServiceCategoriesDataImpl) then) =
+      __$$ServiceCategoriesDataImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String? id, String? type});
+}
+
+/// @nodoc
+class __$$ServiceCategoriesDataImplCopyWithImpl<$Res>
+    extends _$ServiceCategoriesDataCopyWithImpl<$Res,
+        _$ServiceCategoriesDataImpl>
+    implements _$$ServiceCategoriesDataImplCopyWith<$Res> {
+  __$$ServiceCategoriesDataImplCopyWithImpl(_$ServiceCategoriesDataImpl _value,
+      $Res Function(_$ServiceCategoriesDataImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = freezed,
+    Object? type = freezed,
+  }) {
+    return _then(_$ServiceCategoriesDataImpl(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
+      type: freezed == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ServiceCategoriesDataImpl implements _ServiceCategoriesData {
+  const _$ServiceCategoriesDataImpl({this.id, this.type});
+
+  @override
+  final String? id;
+  @override
+  final String? type;
+
+  @override
+  String toString() {
+    return 'ServiceCategoriesData(id: $id, type: $type)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ServiceCategoriesDataImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.type, type) || other.type == type));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, id, type);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ServiceCategoriesDataImplCopyWith<_$ServiceCategoriesDataImpl>
+      get copyWith => __$$ServiceCategoriesDataImplCopyWithImpl<
+          _$ServiceCategoriesDataImpl>(this, _$identity);
+}
+
+abstract class _ServiceCategoriesData implements ServiceCategoriesData {
+  const factory _ServiceCategoriesData({final String? id, final String? type}) =
+      _$ServiceCategoriesDataImpl;
+
+  @override
+  String? get id;
+  @override
+  String? get type;
+  @override
+  @JsonKey(ignore: true)
+  _$$ServiceCategoriesDataImplCopyWith<_$ServiceCategoriesDataImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

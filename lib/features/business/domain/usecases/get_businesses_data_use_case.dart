@@ -8,9 +8,9 @@ class GetBusinessesDataUseCase {
   final BusinessesRepository businessesDataRepository;
 
   Future<Either<Failure, BusinessesData>> call({
-    required int page,
+    required int offset,
     required Coordinates coordinates,
   }) async {
-    return await businessesDataRepository.get(page, coordinates);
+    return await businessesDataRepository.get(offset, coordinates);
   }
 }

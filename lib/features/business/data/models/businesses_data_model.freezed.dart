@@ -3649,6 +3649,9 @@ mixin _$RelationshipsModel {
   @JsonKey(name: 'primary_photo')
   PrimaryPhotoModel? get primaryPhotoModel =>
       throw _privateConstructorUsedError;
+  @JsonKey(name: 'service_categories')
+  ServiceCategoriesModel? get serviceCategoriesModel =>
+      throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -3663,9 +3666,12 @@ abstract class $RelationshipsModelCopyWith<$Res> {
       _$RelationshipsModelCopyWithImpl<$Res, RelationshipsModel>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'primary_photo') PrimaryPhotoModel? primaryPhotoModel});
+      {@JsonKey(name: 'primary_photo') PrimaryPhotoModel? primaryPhotoModel,
+      @JsonKey(name: 'service_categories')
+      ServiceCategoriesModel? serviceCategoriesModel});
 
   $PrimaryPhotoModelCopyWith<$Res>? get primaryPhotoModel;
+  $ServiceCategoriesModelCopyWith<$Res>? get serviceCategoriesModel;
 }
 
 /// @nodoc
@@ -3682,12 +3688,17 @@ class _$RelationshipsModelCopyWithImpl<$Res, $Val extends RelationshipsModel>
   @override
   $Res call({
     Object? primaryPhotoModel = freezed,
+    Object? serviceCategoriesModel = freezed,
   }) {
     return _then(_value.copyWith(
       primaryPhotoModel: freezed == primaryPhotoModel
           ? _value.primaryPhotoModel
           : primaryPhotoModel // ignore: cast_nullable_to_non_nullable
               as PrimaryPhotoModel?,
+      serviceCategoriesModel: freezed == serviceCategoriesModel
+          ? _value.serviceCategoriesModel
+          : serviceCategoriesModel // ignore: cast_nullable_to_non_nullable
+              as ServiceCategoriesModel?,
     ) as $Val);
   }
 
@@ -3702,6 +3713,19 @@ class _$RelationshipsModelCopyWithImpl<$Res, $Val extends RelationshipsModel>
       return _then(_value.copyWith(primaryPhotoModel: value) as $Val);
     });
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ServiceCategoriesModelCopyWith<$Res>? get serviceCategoriesModel {
+    if (_value.serviceCategoriesModel == null) {
+      return null;
+    }
+
+    return $ServiceCategoriesModelCopyWith<$Res>(_value.serviceCategoriesModel!,
+        (value) {
+      return _then(_value.copyWith(serviceCategoriesModel: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -3713,10 +3737,14 @@ abstract class _$$RelationshipsModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'primary_photo') PrimaryPhotoModel? primaryPhotoModel});
+      {@JsonKey(name: 'primary_photo') PrimaryPhotoModel? primaryPhotoModel,
+      @JsonKey(name: 'service_categories')
+      ServiceCategoriesModel? serviceCategoriesModel});
 
   @override
   $PrimaryPhotoModelCopyWith<$Res>? get primaryPhotoModel;
+  @override
+  $ServiceCategoriesModelCopyWith<$Res>? get serviceCategoriesModel;
 }
 
 /// @nodoc
@@ -3731,12 +3759,17 @@ class __$$RelationshipsModelImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? primaryPhotoModel = freezed,
+    Object? serviceCategoriesModel = freezed,
   }) {
     return _then(_$RelationshipsModelImpl(
       primaryPhotoModel: freezed == primaryPhotoModel
           ? _value.primaryPhotoModel
           : primaryPhotoModel // ignore: cast_nullable_to_non_nullable
               as PrimaryPhotoModel?,
+      serviceCategoriesModel: freezed == serviceCategoriesModel
+          ? _value.serviceCategoriesModel
+          : serviceCategoriesModel // ignore: cast_nullable_to_non_nullable
+              as ServiceCategoriesModel?,
     ));
   }
 }
@@ -3745,7 +3778,8 @@ class __$$RelationshipsModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$RelationshipsModelImpl implements _RelationshipsModel {
   const _$RelationshipsModelImpl(
-      {@JsonKey(name: 'primary_photo') this.primaryPhotoModel});
+      {@JsonKey(name: 'primary_photo') this.primaryPhotoModel,
+      @JsonKey(name: 'service_categories') this.serviceCategoriesModel});
 
   factory _$RelationshipsModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$RelationshipsModelImplFromJson(json);
@@ -3753,10 +3787,13 @@ class _$RelationshipsModelImpl implements _RelationshipsModel {
   @override
   @JsonKey(name: 'primary_photo')
   final PrimaryPhotoModel? primaryPhotoModel;
+  @override
+  @JsonKey(name: 'service_categories')
+  final ServiceCategoriesModel? serviceCategoriesModel;
 
   @override
   String toString() {
-    return 'RelationshipsModel(primaryPhotoModel: $primaryPhotoModel)';
+    return 'RelationshipsModel(primaryPhotoModel: $primaryPhotoModel, serviceCategoriesModel: $serviceCategoriesModel)';
   }
 
   @override
@@ -3765,12 +3802,15 @@ class _$RelationshipsModelImpl implements _RelationshipsModel {
         (other.runtimeType == runtimeType &&
             other is _$RelationshipsModelImpl &&
             (identical(other.primaryPhotoModel, primaryPhotoModel) ||
-                other.primaryPhotoModel == primaryPhotoModel));
+                other.primaryPhotoModel == primaryPhotoModel) &&
+            (identical(other.serviceCategoriesModel, serviceCategoriesModel) ||
+                other.serviceCategoriesModel == serviceCategoriesModel));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, primaryPhotoModel);
+  int get hashCode =>
+      Object.hash(runtimeType, primaryPhotoModel, serviceCategoriesModel);
 
   @JsonKey(ignore: true)
   @override
@@ -3789,8 +3829,11 @@ class _$RelationshipsModelImpl implements _RelationshipsModel {
 
 abstract class _RelationshipsModel implements RelationshipsModel {
   const factory _RelationshipsModel(
-      {@JsonKey(name: 'primary_photo')
-      final PrimaryPhotoModel? primaryPhotoModel}) = _$RelationshipsModelImpl;
+          {@JsonKey(name: 'primary_photo')
+          final PrimaryPhotoModel? primaryPhotoModel,
+          @JsonKey(name: 'service_categories')
+          final ServiceCategoriesModel? serviceCategoriesModel}) =
+      _$RelationshipsModelImpl;
 
   factory _RelationshipsModel.fromJson(Map<String, dynamic> json) =
       _$RelationshipsModelImpl.fromJson;
@@ -3798,6 +3841,9 @@ abstract class _RelationshipsModel implements RelationshipsModel {
   @override
   @JsonKey(name: 'primary_photo')
   PrimaryPhotoModel? get primaryPhotoModel;
+  @override
+  @JsonKey(name: 'service_categories')
+  ServiceCategoriesModel? get serviceCategoriesModel;
   @override
   @JsonKey(ignore: true)
   _$$RelationshipsModelImplCopyWith<_$RelationshipsModelImpl> get copyWith =>
@@ -4135,5 +4181,345 @@ abstract class _RelationshipsDataModel implements RelationshipsDataModel {
   @override
   @JsonKey(ignore: true)
   _$$RelationshipsDataModelImplCopyWith<_$RelationshipsDataModelImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+ServiceCategoriesModel _$ServiceCategoriesModelFromJson(
+    Map<String, dynamic> json) {
+  return _ServiceCategoriesModel.fromJson(json);
+}
+
+/// @nodoc
+mixin _$ServiceCategoriesModel {
+  @JsonKey(name: 'data')
+  List<ServiceCategoriesDataModel>? get dataModel =>
+      throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $ServiceCategoriesModelCopyWith<ServiceCategoriesModel> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ServiceCategoriesModelCopyWith<$Res> {
+  factory $ServiceCategoriesModelCopyWith(ServiceCategoriesModel value,
+          $Res Function(ServiceCategoriesModel) then) =
+      _$ServiceCategoriesModelCopyWithImpl<$Res, ServiceCategoriesModel>;
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'data') List<ServiceCategoriesDataModel>? dataModel});
+}
+
+/// @nodoc
+class _$ServiceCategoriesModelCopyWithImpl<$Res,
+        $Val extends ServiceCategoriesModel>
+    implements $ServiceCategoriesModelCopyWith<$Res> {
+  _$ServiceCategoriesModelCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? dataModel = freezed,
+  }) {
+    return _then(_value.copyWith(
+      dataModel: freezed == dataModel
+          ? _value.dataModel
+          : dataModel // ignore: cast_nullable_to_non_nullable
+              as List<ServiceCategoriesDataModel>?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$ServiceCategoriesModelImplCopyWith<$Res>
+    implements $ServiceCategoriesModelCopyWith<$Res> {
+  factory _$$ServiceCategoriesModelImplCopyWith(
+          _$ServiceCategoriesModelImpl value,
+          $Res Function(_$ServiceCategoriesModelImpl) then) =
+      __$$ServiceCategoriesModelImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'data') List<ServiceCategoriesDataModel>? dataModel});
+}
+
+/// @nodoc
+class __$$ServiceCategoriesModelImplCopyWithImpl<$Res>
+    extends _$ServiceCategoriesModelCopyWithImpl<$Res,
+        _$ServiceCategoriesModelImpl>
+    implements _$$ServiceCategoriesModelImplCopyWith<$Res> {
+  __$$ServiceCategoriesModelImplCopyWithImpl(
+      _$ServiceCategoriesModelImpl _value,
+      $Res Function(_$ServiceCategoriesModelImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? dataModel = freezed,
+  }) {
+    return _then(_$ServiceCategoriesModelImpl(
+      dataModel: freezed == dataModel
+          ? _value._dataModel
+          : dataModel // ignore: cast_nullable_to_non_nullable
+              as List<ServiceCategoriesDataModel>?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$ServiceCategoriesModelImpl implements _ServiceCategoriesModel {
+  const _$ServiceCategoriesModelImpl(
+      {@JsonKey(name: 'data')
+      final List<ServiceCategoriesDataModel>? dataModel})
+      : _dataModel = dataModel;
+
+  factory _$ServiceCategoriesModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ServiceCategoriesModelImplFromJson(json);
+
+  final List<ServiceCategoriesDataModel>? _dataModel;
+  @override
+  @JsonKey(name: 'data')
+  List<ServiceCategoriesDataModel>? get dataModel {
+    final value = _dataModel;
+    if (value == null) return null;
+    if (_dataModel is EqualUnmodifiableListView) return _dataModel;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  @override
+  String toString() {
+    return 'ServiceCategoriesModel(dataModel: $dataModel)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ServiceCategoriesModelImpl &&
+            const DeepCollectionEquality()
+                .equals(other._dataModel, _dataModel));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_dataModel));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ServiceCategoriesModelImplCopyWith<_$ServiceCategoriesModelImpl>
+      get copyWith => __$$ServiceCategoriesModelImplCopyWithImpl<
+          _$ServiceCategoriesModelImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$ServiceCategoriesModelImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _ServiceCategoriesModel implements ServiceCategoriesModel {
+  const factory _ServiceCategoriesModel(
+          {@JsonKey(name: 'data')
+          final List<ServiceCategoriesDataModel>? dataModel}) =
+      _$ServiceCategoriesModelImpl;
+
+  factory _ServiceCategoriesModel.fromJson(Map<String, dynamic> json) =
+      _$ServiceCategoriesModelImpl.fromJson;
+
+  @override
+  @JsonKey(name: 'data')
+  List<ServiceCategoriesDataModel>? get dataModel;
+  @override
+  @JsonKey(ignore: true)
+  _$$ServiceCategoriesModelImplCopyWith<_$ServiceCategoriesModelImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+ServiceCategoriesDataModel _$ServiceCategoriesDataModelFromJson(
+    Map<String, dynamic> json) {
+  return _ServiceCategoriesDataModel.fromJson(json);
+}
+
+/// @nodoc
+mixin _$ServiceCategoriesDataModel {
+  @JsonKey(name: 'id')
+  String? get idModel => throw _privateConstructorUsedError;
+  @JsonKey(name: 'type')
+  String? get typeModel => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $ServiceCategoriesDataModelCopyWith<ServiceCategoriesDataModel>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ServiceCategoriesDataModelCopyWith<$Res> {
+  factory $ServiceCategoriesDataModelCopyWith(ServiceCategoriesDataModel value,
+          $Res Function(ServiceCategoriesDataModel) then) =
+      _$ServiceCategoriesDataModelCopyWithImpl<$Res,
+          ServiceCategoriesDataModel>;
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'id') String? idModel,
+      @JsonKey(name: 'type') String? typeModel});
+}
+
+/// @nodoc
+class _$ServiceCategoriesDataModelCopyWithImpl<$Res,
+        $Val extends ServiceCategoriesDataModel>
+    implements $ServiceCategoriesDataModelCopyWith<$Res> {
+  _$ServiceCategoriesDataModelCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? idModel = freezed,
+    Object? typeModel = freezed,
+  }) {
+    return _then(_value.copyWith(
+      idModel: freezed == idModel
+          ? _value.idModel
+          : idModel // ignore: cast_nullable_to_non_nullable
+              as String?,
+      typeModel: freezed == typeModel
+          ? _value.typeModel
+          : typeModel // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$ServiceCategoriesDataModelImplCopyWith<$Res>
+    implements $ServiceCategoriesDataModelCopyWith<$Res> {
+  factory _$$ServiceCategoriesDataModelImplCopyWith(
+          _$ServiceCategoriesDataModelImpl value,
+          $Res Function(_$ServiceCategoriesDataModelImpl) then) =
+      __$$ServiceCategoriesDataModelImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'id') String? idModel,
+      @JsonKey(name: 'type') String? typeModel});
+}
+
+/// @nodoc
+class __$$ServiceCategoriesDataModelImplCopyWithImpl<$Res>
+    extends _$ServiceCategoriesDataModelCopyWithImpl<$Res,
+        _$ServiceCategoriesDataModelImpl>
+    implements _$$ServiceCategoriesDataModelImplCopyWith<$Res> {
+  __$$ServiceCategoriesDataModelImplCopyWithImpl(
+      _$ServiceCategoriesDataModelImpl _value,
+      $Res Function(_$ServiceCategoriesDataModelImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? idModel = freezed,
+    Object? typeModel = freezed,
+  }) {
+    return _then(_$ServiceCategoriesDataModelImpl(
+      idModel: freezed == idModel
+          ? _value.idModel
+          : idModel // ignore: cast_nullable_to_non_nullable
+              as String?,
+      typeModel: freezed == typeModel
+          ? _value.typeModel
+          : typeModel // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$ServiceCategoriesDataModelImpl implements _ServiceCategoriesDataModel {
+  const _$ServiceCategoriesDataModelImpl(
+      {@JsonKey(name: 'id') this.idModel,
+      @JsonKey(name: 'type') this.typeModel});
+
+  factory _$ServiceCategoriesDataModelImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$ServiceCategoriesDataModelImplFromJson(json);
+
+  @override
+  @JsonKey(name: 'id')
+  final String? idModel;
+  @override
+  @JsonKey(name: 'type')
+  final String? typeModel;
+
+  @override
+  String toString() {
+    return 'ServiceCategoriesDataModel(idModel: $idModel, typeModel: $typeModel)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ServiceCategoriesDataModelImpl &&
+            (identical(other.idModel, idModel) || other.idModel == idModel) &&
+            (identical(other.typeModel, typeModel) ||
+                other.typeModel == typeModel));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, idModel, typeModel);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ServiceCategoriesDataModelImplCopyWith<_$ServiceCategoriesDataModelImpl>
+      get copyWith => __$$ServiceCategoriesDataModelImplCopyWithImpl<
+          _$ServiceCategoriesDataModelImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$ServiceCategoriesDataModelImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _ServiceCategoriesDataModel
+    implements ServiceCategoriesDataModel {
+  const factory _ServiceCategoriesDataModel(
+          {@JsonKey(name: 'id') final String? idModel,
+          @JsonKey(name: 'type') final String? typeModel}) =
+      _$ServiceCategoriesDataModelImpl;
+
+  factory _ServiceCategoriesDataModel.fromJson(Map<String, dynamic> json) =
+      _$ServiceCategoriesDataModelImpl.fromJson;
+
+  @override
+  @JsonKey(name: 'id')
+  String? get idModel;
+  @override
+  @JsonKey(name: 'type')
+  String? get typeModel;
+  @override
+  @JsonKey(ignore: true)
+  _$$ServiceCategoriesDataModelImplCopyWith<_$ServiceCategoriesDataModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

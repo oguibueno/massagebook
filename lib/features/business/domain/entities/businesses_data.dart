@@ -148,6 +148,7 @@ class Self with _$Self {
 class Relationships with _$Relationships {
   const factory Relationships({
     PrimaryPhoto? primaryPhoto,
+    ServiceCategories? serviceCategories,
   }) = _Relationships;
 }
 
@@ -164,4 +165,19 @@ class RelationshipsData with _$RelationshipsData {
     String? id,
     String? type,
   }) = _RelationshipsData;
+}
+
+@freezed
+class ServiceCategories with _$ServiceCategories {
+  const factory ServiceCategories({
+    List<ServiceCategoriesData>? data,
+  }) = _ServiceCategories;
+}
+
+@freezed
+class ServiceCategoriesData with _$ServiceCategoriesData {
+  const factory ServiceCategoriesData({
+    String? id,
+    String? type,
+  }) = _ServiceCategoriesData;
 }

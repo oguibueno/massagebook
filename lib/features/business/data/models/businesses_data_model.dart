@@ -200,6 +200,8 @@ class RelationshipsItemModel with _$RelationshipsItemModel {
 class RelationshipsModel with _$RelationshipsModel {
   const factory RelationshipsModel({
     @JsonKey(name: 'primary_photo') PrimaryPhotoModel? primaryPhotoModel,
+    @JsonKey(name: 'service_categories')
+    ServiceCategoriesModel? serviceCategoriesModel,
   }) = _RelationshipsModel;
 
   factory RelationshipsModel.fromJson(Map<String, dynamic> json) =>
@@ -225,4 +227,25 @@ class RelationshipsDataModel with _$RelationshipsDataModel {
 
   factory RelationshipsDataModel.fromJson(Map<String, dynamic> json) =>
       _$RelationshipsDataModelFromJson(json);
+}
+
+@freezed
+class ServiceCategoriesModel with _$ServiceCategoriesModel {
+  const factory ServiceCategoriesModel({
+    @JsonKey(name: 'data') List<ServiceCategoriesDataModel>? dataModel,
+  }) = _ServiceCategoriesModel;
+
+  factory ServiceCategoriesModel.fromJson(Map<String, dynamic> json) =>
+      _$ServiceCategoriesModelFromJson(json);
+}
+
+@freezed
+class ServiceCategoriesDataModel with _$ServiceCategoriesDataModel {
+  const factory ServiceCategoriesDataModel({
+    @JsonKey(name: 'id') String? idModel,
+    @JsonKey(name: 'type') String? typeModel,
+  }) = _ServiceCategoriesDataModel;
+
+  factory ServiceCategoriesDataModel.fromJson(Map<String, dynamic> json) =>
+      _$ServiceCategoriesDataModelFromJson(json);
 }

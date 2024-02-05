@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:massagebook/config/dependency_injection.dart';
-import 'package:massagebook/core/utils/utils.dart';
 import 'package:massagebook/features/business/presentation/presentation.dart';
 
 class BusinessesPage extends StatelessWidget {
@@ -10,8 +9,7 @@ class BusinessesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => BusinessCubit(getIt())
-        ..get(coordinates: CoreConstants.defaultCities.first.coordinates!),
+      create: (context) => BusinessCubit(getIt()),
       child: const BusinessesView(),
     );
   }

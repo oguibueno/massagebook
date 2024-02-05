@@ -138,8 +138,10 @@ extension SelfToEntity on SelfModel {
 }
 
 extension RelationshipsToEntity on RelationshipsModel {
-  Relationships toEntity() =>
-      Relationships(primaryPhoto: primaryPhotoModel?.toEntity());
+  Relationships toEntity() => Relationships(
+        primaryPhoto: primaryPhotoModel?.toEntity(),
+        serviceCategories: serviceCategoriesModel?.toEntity(),
+      );
 }
 
 extension PrimaryPhotoToEntity on PrimaryPhotoModel {
@@ -148,6 +150,18 @@ extension PrimaryPhotoToEntity on PrimaryPhotoModel {
 
 extension RelationshipsDataToEntity on RelationshipsDataModel {
   RelationshipsData toEntity() => RelationshipsData(
+        id: idModel ?? '',
+        type: typeModel ?? '',
+      );
+}
+
+extension ServiceCategoriesToEntity on ServiceCategoriesModel {
+  ServiceCategories toEntity() => ServiceCategories(
+      data: dataModel?.map((dataItem) => dataItem.toEntity()).toList());
+}
+
+extension ServiceCategoriesDataToEntity on ServiceCategoriesDataModel {
+  ServiceCategoriesData toEntity() => ServiceCategoriesData(
         id: idModel ?? '',
         type: typeModel ?? '',
       );

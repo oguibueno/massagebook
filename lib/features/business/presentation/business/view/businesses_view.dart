@@ -1,3 +1,4 @@
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:massagebook/core/utils/utils.dart';
@@ -14,6 +15,17 @@ class BusinessesView extends StatefulWidget {
 class _BusinessesViewState extends State<BusinessesView> {
   late Coordinates _selectedFilter;
 
+  late Map<String, List<IncludedItem>> _filterOptions;
+
+  String? _choosenCategoryId;
+
+  @override
+  void initState() {
+    super.initState();
+    _selectedFilter = CoreConstants.defaultCities.first.coordinates!;
+    context.read<BusinessCubit>().get(coordinates: _selectedFilter);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,7 +39,7 @@ class _BusinessesViewState extends State<BusinessesView> {
             onSelected: (Coordinates value) {
               setState(() {
                 _selectedFilter = value;
-
+                _choosenCategoryId = null;
                 context.read<BusinessCubit>().get(
                       coordinates: _selectedFilter,
                       isFiltered: true,
@@ -63,12 +75,31 @@ class _BusinessesViewState extends State<BusinessesView> {
                 return const Text('Success but no data!');
               }
 
+              final serviceCategories = data.included
+                      ?.where((element) =>
+                          element.type == CoreConstants.serviceCategories)
+                      .toList() ??
+                  <IncludedItem>[];
+
+              _filterOptions = groupBy(
+                serviceCategories,
+                (obj) => obj.attributes!.categoryType!,
+              );
+
+              final filteredData = [...data.data!]
+                  .where((e) => e.relationships!.serviceCategories!.data!
+                      .any((e) => e.id == _choosenCategoryId))
+                  .toList();
+
+              final businessData = _choosenCategoryId == null ||
+                      _choosenCategoryId?.isEmpty == true
+                  ? data
+                  : data.copyWith(data: filteredData);
+
               return PaginatedScrollWidget(
-                businessData: data,
+                businessData: businessData,
                 isLoading: isLoading,
-                onReachedBottom: () => context.read<BusinessCubit>().get(
-                      coordinates: _selectedFilter,
-                    ),
+                onReachedBottom: _onReachedBottom,
               );
             },
             initial: () => const Text('initial'),
@@ -76,6 +107,34 @@ class _BusinessesViewState extends State<BusinessesView> {
           );
         },
       ),
+      floatingActionButton: FloatingActionButton.small(
+        backgroundColor: Colors.teal[300],
+        child: const Icon(
+          Icons.filter_alt_outlined,
+          color: Colors.white,
+          size: 28,
+        ),
+        onPressed: () => showModalBottomSheet(
+          context: context,
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(top: Radius.circular(6.0)),
+          ),
+          builder: (context) => BottomSheetFilterWidget(
+            filterOptions: _filterOptions,
+            onCategoryChoosen: _onCategoryChoosen,
+          ),
+        ),
+      ),
     );
+  }
+
+  void _onReachedBottom() {
+    context.read<BusinessCubit>().get(coordinates: _selectedFilter);
+  }
+
+  void _onCategoryChoosen(String category) {
+    setState(() {
+      _choosenCategoryId = category;
+    });
   }
 }

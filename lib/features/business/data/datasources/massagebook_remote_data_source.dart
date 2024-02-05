@@ -6,7 +6,7 @@ import 'package:massagebook/features/business/data/models/models.dart';
 
 abstract class MassageBookRemoteDataSource {
   Future<BusinessesDataModel> fetchBusinessesData(
-    int page,
+    int offset,
     CoordinatesModel coordinates,
   );
 }
@@ -21,7 +21,7 @@ class MassageBookRemoteDataSourceImpl implements MassageBookRemoteDataSource {
 
   @override
   Future<BusinessesDataModel> fetchBusinessesData(
-    int page,
+    int offset,
     CoordinatesModel coordinates,
   ) async {
     // String data = await rootBundle.loadString('lib/fixtures.json');
@@ -30,7 +30,7 @@ class MassageBookRemoteDataSourceImpl implements MassageBookRemoteDataSource {
 
     final response = await httpClient.get(
       Uri.parse(
-        '$_baseUrl&offset=$page&filters=latitude==${coordinates.latitudeModel},longitude==${coordinates.longitudeModel}',
+        '$_baseUrl&offset=$offset&filters=latitude==${coordinates.latitudeModel},longitude==${coordinates.longitudeModel}',
       ),
     );
 

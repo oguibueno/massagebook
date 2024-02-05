@@ -315,12 +315,17 @@ _$RelationshipsModelImpl _$$RelationshipsModelImplFromJson(
           ? null
           : PrimaryPhotoModel.fromJson(
               json['primary_photo'] as Map<String, dynamic>),
+      serviceCategoriesModel: json['service_categories'] == null
+          ? null
+          : ServiceCategoriesModel.fromJson(
+              json['service_categories'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$RelationshipsModelImplToJson(
         _$RelationshipsModelImpl instance) =>
     <String, dynamic>{
       'primary_photo': instance.primaryPhotoModel,
+      'service_categories': instance.serviceCategoriesModel,
     };
 
 _$PrimaryPhotoModelImpl _$$PrimaryPhotoModelImplFromJson(
@@ -347,6 +352,35 @@ _$RelationshipsDataModelImpl _$$RelationshipsDataModelImplFromJson(
 
 Map<String, dynamic> _$$RelationshipsDataModelImplToJson(
         _$RelationshipsDataModelImpl instance) =>
+    <String, dynamic>{
+      'id': instance.idModel,
+      'type': instance.typeModel,
+    };
+
+_$ServiceCategoriesModelImpl _$$ServiceCategoriesModelImplFromJson(
+        Map<String, dynamic> json) =>
+    _$ServiceCategoriesModelImpl(
+      dataModel: (json['data'] as List<dynamic>?)
+          ?.map((e) =>
+              ServiceCategoriesDataModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+
+Map<String, dynamic> _$$ServiceCategoriesModelImplToJson(
+        _$ServiceCategoriesModelImpl instance) =>
+    <String, dynamic>{
+      'data': instance.dataModel,
+    };
+
+_$ServiceCategoriesDataModelImpl _$$ServiceCategoriesDataModelImplFromJson(
+        Map<String, dynamic> json) =>
+    _$ServiceCategoriesDataModelImpl(
+      idModel: json['id'] as String?,
+      typeModel: json['type'] as String?,
+    );
+
+Map<String, dynamic> _$$ServiceCategoriesDataModelImplToJson(
+        _$ServiceCategoriesDataModelImpl instance) =>
     <String, dynamic>{
       'id': instance.idModel,
       'type': instance.typeModel,

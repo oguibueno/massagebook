@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:collection/collection.dart';
+import 'package:massagebook/core/utils/utils.dart';
 import 'package:massagebook/features/business/domain/domain.dart';
 import 'package:massagebook/features/business/presentation/presentation.dart';
 
@@ -40,7 +41,7 @@ class PaginatedScrollWidget extends StatelessWidget {
                 if (index < businessData.data!.length) {
                   final primaryPhoto = businessData.included
                       ?.firstWhereOrNull((e) =>
-                          e.type == 'pu-photos' &&
+                          e.type == CoreConstants.puPhotos &&
                           e.id == data?.relationships?.primaryPhoto?.data?.id)
                       ?.attributes
                       ?.photo;
