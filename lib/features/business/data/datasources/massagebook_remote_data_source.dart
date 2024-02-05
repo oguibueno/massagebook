@@ -1,11 +1,15 @@
 import 'dart:convert';
 
-import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
+import 'package:massagebook/core/utils/utils.dart';
 import 'package:massagebook/features/business/data/models/models.dart';
 
 abstract class MassageBookRemoteDataSource {
-  Future<BusinessesDataModel> fetchBusinessesData(int offset);
+  Future<BusinessesDataModel> fetchBusinessesData(
+    int page,
+    double latitude,
+    double longitude,
+  );
 }
 
 class MassageBookRemoteDataSourceImpl implements MassageBookRemoteDataSource {
@@ -13,21 +17,23 @@ class MassageBookRemoteDataSourceImpl implements MassageBookRemoteDataSource {
 
   final http.Client httpClient;
 
-  final String _baseUrl =
-      'https://www.massagebook.com/nxt/pu-api/v1/businesses?limit=5&includes=service_categories,primary_photo&filters=latitude%3D%3D32.7833163,longitude%3D%3D-79.9319664';
+  static final String _baseUrl =
+      '${CoreConstants.massageBookApiBaseUrl}/businesses?limit=${CoreConstants.limit}&includes=${CoreConstants.categories.join(',')}';
 
   @override
-  Future<BusinessesDataModel> fetchBusinessesData(int offset) async {
-    //const limit = 10;
-
-    // await Future.delayed(Duration(seconds: 2));
-
+  Future<BusinessesDataModel> fetchBusinessesData(
+    int page,
+    double latitude,
+    double longitude,
+  ) async {
     // String data = await rootBundle.loadString('lib/fixtures.json');
     // final map = json.decode(data);
     // return BusinessesDataModel.fromJson(map);
 
     final response = await httpClient.get(
-      Uri.parse(_baseUrl),
+      Uri.parse(
+        '$_baseUrl&offset=$page&filters=latitude==$latitude,longitude==$longitude',
+      ),
     );
 
     switch (response.statusCode) {

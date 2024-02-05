@@ -17,52 +17,46 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$BusinessState {
   @optionalTypeArgs
-  TResult when<TResult extends Object?>({
+  TResult when<TResult extends Object?>(
+    TResult Function(BusinessesData? data, bool isLoading) $default, {
     required TResult Function() initial,
-    required TResult Function() loading,
     required TResult Function(Failure failure) error,
-    required TResult Function(BusinessesData data) success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(BusinessesData? data, bool isLoading)? $default, {
     TResult? Function()? initial,
-    TResult? Function()? loading,
     TResult? Function(Failure failure)? error,
-    TResult? Function(BusinessesData data)? success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(BusinessesData? data, bool isLoading)? $default, {
     TResult Function()? initial,
-    TResult Function()? loading,
     TResult Function(Failure failure)? error,
-    TResult Function(BusinessesData data)? success,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult map<TResult extends Object?>({
+  TResult map<TResult extends Object?>(
+    TResult Function(_BusinessState value) $default, {
     required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
     required TResult Function(_Error value) error,
-    required TResult Function(_Success value) success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_BusinessState value)? $default, {
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
     TResult? Function(_Error value)? error,
-    TResult? Function(_Success value)? success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_BusinessState value)? $default, {
     TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
     TResult Function(_Error value)? error,
-    TResult Function(_Success value)? success,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -123,33 +117,30 @@ class _$InitialImpl implements _Initial {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object?>({
+  TResult when<TResult extends Object?>(
+    TResult Function(BusinessesData? data, bool isLoading) $default, {
     required TResult Function() initial,
-    required TResult Function() loading,
     required TResult Function(Failure failure) error,
-    required TResult Function(BusinessesData data) success,
   }) {
     return initial();
   }
 
   @override
   @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(BusinessesData? data, bool isLoading)? $default, {
     TResult? Function()? initial,
-    TResult? Function()? loading,
     TResult? Function(Failure failure)? error,
-    TResult? Function(BusinessesData data)? success,
   }) {
     return initial?.call();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(BusinessesData? data, bool isLoading)? $default, {
     TResult Function()? initial,
-    TResult Function()? loading,
     TResult Function(Failure failure)? error,
-    TResult Function(BusinessesData data)? success,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -160,33 +151,30 @@ class _$InitialImpl implements _Initial {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object?>({
+  TResult map<TResult extends Object?>(
+    TResult Function(_BusinessState value) $default, {
     required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
     required TResult Function(_Error value) error,
-    required TResult Function(_Success value) success,
   }) {
     return initial(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_BusinessState value)? $default, {
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
     TResult? Function(_Error value)? error,
-    TResult? Function(_Success value)? success,
   }) {
     return initial?.call(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_BusinessState value)? $default, {
     TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
     TResult Function(_Error value)? error,
-    TResult Function(_Success value)? success,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -198,120 +186,6 @@ class _$InitialImpl implements _Initial {
 
 abstract class _Initial implements BusinessState {
   const factory _Initial() = _$InitialImpl;
-}
-
-/// @nodoc
-abstract class _$$LoadingImplCopyWith<$Res> {
-  factory _$$LoadingImplCopyWith(
-          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
-      __$$LoadingImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$LoadingImplCopyWithImpl<$Res>
-    extends _$BusinessStateCopyWithImpl<$Res, _$LoadingImpl>
-    implements _$$LoadingImplCopyWith<$Res> {
-  __$$LoadingImplCopyWithImpl(
-      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$LoadingImpl implements _Loading {
-  const _$LoadingImpl();
-
-  @override
-  String toString() {
-    return 'BusinessState.loading()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$LoadingImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(Failure failure) error,
-    required TResult Function(BusinessesData data) success,
-  }) {
-    return loading();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(Failure failure)? error,
-    TResult? Function(BusinessesData data)? success,
-  }) {
-    return loading?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(Failure failure)? error,
-    TResult Function(BusinessesData data)? success,
-    required TResult orElse(),
-  }) {
-    if (loading != null) {
-      return loading();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Error value) error,
-    required TResult Function(_Success value) success,
-  }) {
-    return loading(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Error value)? error,
-    TResult? Function(_Success value)? success,
-  }) {
-    return loading?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Error value)? error,
-    TResult Function(_Success value)? success,
-    required TResult orElse(),
-  }) {
-    if (loading != null) {
-      return loading(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Loading implements BusinessState {
-  const factory _Loading() = _$LoadingImpl;
 }
 
 /// @nodoc
@@ -387,33 +261,30 @@ class _$ErrorImpl implements _Error {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object?>({
+  TResult when<TResult extends Object?>(
+    TResult Function(BusinessesData? data, bool isLoading) $default, {
     required TResult Function() initial,
-    required TResult Function() loading,
     required TResult Function(Failure failure) error,
-    required TResult Function(BusinessesData data) success,
   }) {
     return error(failure);
   }
 
   @override
   @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(BusinessesData? data, bool isLoading)? $default, {
     TResult? Function()? initial,
-    TResult? Function()? loading,
     TResult? Function(Failure failure)? error,
-    TResult? Function(BusinessesData data)? success,
   }) {
     return error?.call(failure);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(BusinessesData? data, bool isLoading)? $default, {
     TResult Function()? initial,
-    TResult Function()? loading,
     TResult Function(Failure failure)? error,
-    TResult Function(BusinessesData data)? success,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -424,33 +295,30 @@ class _$ErrorImpl implements _Error {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object?>({
+  TResult map<TResult extends Object?>(
+    TResult Function(_BusinessState value) $default, {
     required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
     required TResult Function(_Error value) error,
-    required TResult Function(_Success value) success,
   }) {
     return error(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_BusinessState value)? $default, {
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
     TResult? Function(_Error value)? error,
-    TResult? Function(_Success value)? success,
   }) {
     return error?.call(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_BusinessState value)? $default, {
     TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
     TResult Function(_Error value)? error,
-    TResult Function(_Success value)? success,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -470,41 +338,50 @@ abstract class _Error implements BusinessState {
 }
 
 /// @nodoc
-abstract class _$$SuccessImplCopyWith<$Res> {
-  factory _$$SuccessImplCopyWith(
-          _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
-      __$$SuccessImplCopyWithImpl<$Res>;
+abstract class _$$BusinessStateImplCopyWith<$Res> {
+  factory _$$BusinessStateImplCopyWith(
+          _$BusinessStateImpl value, $Res Function(_$BusinessStateImpl) then) =
+      __$$BusinessStateImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({BusinessesData data});
+  $Res call({BusinessesData? data, bool isLoading});
 
-  $BusinessesDataCopyWith<$Res> get data;
+  $BusinessesDataCopyWith<$Res>? get data;
 }
 
 /// @nodoc
-class __$$SuccessImplCopyWithImpl<$Res>
-    extends _$BusinessStateCopyWithImpl<$Res, _$SuccessImpl>
-    implements _$$SuccessImplCopyWith<$Res> {
-  __$$SuccessImplCopyWithImpl(
-      _$SuccessImpl _value, $Res Function(_$SuccessImpl) _then)
+class __$$BusinessStateImplCopyWithImpl<$Res>
+    extends _$BusinessStateCopyWithImpl<$Res, _$BusinessStateImpl>
+    implements _$$BusinessStateImplCopyWith<$Res> {
+  __$$BusinessStateImplCopyWithImpl(
+      _$BusinessStateImpl _value, $Res Function(_$BusinessStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? data = null,
+    Object? data = freezed,
+    Object? isLoading = null,
   }) {
-    return _then(_$SuccessImpl(
-      null == data
+    return _then(_$BusinessStateImpl(
+      freezed == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as BusinessesData,
+              as BusinessesData?,
+      null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $BusinessesDataCopyWith<$Res> get data {
-    return $BusinessesDataCopyWith<$Res>(_value.data, (value) {
+  $BusinessesDataCopyWith<$Res>? get data {
+    if (_value.data == null) {
+      return null;
+    }
+
+    return $BusinessesDataCopyWith<$Res>(_value.data!, (value) {
       return _then(_value.copyWith(data: value));
     });
   }
@@ -512,114 +389,114 @@ class __$$SuccessImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SuccessImpl implements _Success {
-  const _$SuccessImpl(this.data);
+class _$BusinessStateImpl implements _BusinessState {
+  const _$BusinessStateImpl(this.data, this.isLoading);
 
   @override
-  final BusinessesData data;
+  final BusinessesData? data;
+  @override
+  final bool isLoading;
 
   @override
   String toString() {
-    return 'BusinessState.success(data: $data)';
+    return 'BusinessState(data: $data, isLoading: $isLoading)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SuccessImpl &&
-            (identical(other.data, data) || other.data == data));
+            other is _$BusinessStateImpl &&
+            (identical(other.data, data) || other.data == data) &&
+            (identical(other.isLoading, isLoading) ||
+                other.isLoading == isLoading));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, data);
+  int get hashCode => Object.hash(runtimeType, data, isLoading);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
-      __$$SuccessImplCopyWithImpl<_$SuccessImpl>(this, _$identity);
+  _$$BusinessStateImplCopyWith<_$BusinessStateImpl> get copyWith =>
+      __$$BusinessStateImplCopyWithImpl<_$BusinessStateImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object?>({
+  TResult when<TResult extends Object?>(
+    TResult Function(BusinessesData? data, bool isLoading) $default, {
     required TResult Function() initial,
-    required TResult Function() loading,
     required TResult Function(Failure failure) error,
-    required TResult Function(BusinessesData data) success,
   }) {
-    return success(data);
+    return $default(data, isLoading);
   }
 
   @override
   @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(BusinessesData? data, bool isLoading)? $default, {
     TResult? Function()? initial,
-    TResult? Function()? loading,
     TResult? Function(Failure failure)? error,
-    TResult? Function(BusinessesData data)? success,
   }) {
-    return success?.call(data);
+    return $default?.call(data, isLoading);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(BusinessesData? data, bool isLoading)? $default, {
     TResult Function()? initial,
-    TResult Function()? loading,
     TResult Function(Failure failure)? error,
-    TResult Function(BusinessesData data)? success,
     required TResult orElse(),
   }) {
-    if (success != null) {
-      return success(data);
+    if ($default != null) {
+      return $default(data, isLoading);
     }
     return orElse();
   }
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object?>({
+  TResult map<TResult extends Object?>(
+    TResult Function(_BusinessState value) $default, {
     required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
     required TResult Function(_Error value) error,
-    required TResult Function(_Success value) success,
   }) {
-    return success(this);
+    return $default(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_BusinessState value)? $default, {
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
     TResult? Function(_Error value)? error,
-    TResult? Function(_Success value)? success,
   }) {
-    return success?.call(this);
+    return $default?.call(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_BusinessState value)? $default, {
     TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
     TResult Function(_Error value)? error,
-    TResult Function(_Success value)? success,
     required TResult orElse(),
   }) {
-    if (success != null) {
-      return success(this);
+    if ($default != null) {
+      return $default(this);
     }
     return orElse();
   }
 }
 
-abstract class _Success implements BusinessState {
-  const factory _Success(final BusinessesData data) = _$SuccessImpl;
+abstract class _BusinessState implements BusinessState {
+  const factory _BusinessState(
+      final BusinessesData? data, final bool isLoading) = _$BusinessStateImpl;
 
-  BusinessesData get data;
+  BusinessesData? get data;
+  bool get isLoading;
   @JsonKey(ignore: true)
-  _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
+  _$$BusinessStateImplCopyWith<_$BusinessStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:massagebook/config/dependency_injection.dart';
+import 'package:massagebook/core/utils/utils.dart';
 import 'package:massagebook/features/business/presentation/presentation.dart';
 
 class BusinessesPage extends StatelessWidget {
@@ -10,47 +11,48 @@ class BusinessesPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Businesses'),
+        title: Image.asset(
+          'assets/logo-text.png',
+          height: 40,
+        ),
       ),
       body: BlocProvider(
-        create: (_) => getIt<BusinessCubit>(),
+        create: (context) => BusinessCubit(getIt())
+          ..get(
+            latitude: CoreConstants.defaultCoordinates.first.latitude ?? 0,
+            longitude: CoreConstants.defaultCoordinates.first.longitude ?? 0,
+          ),
         child: BlocBuilder<BusinessCubit, BusinessState>(
           builder: (context, state) {
             return state.when(
-              initial: () => const Text('initial'),
-              loading: () => const CircularProgressIndicator(),
-              error: (error) => Text('Error!!! :( $error'),
-              success: (data) {
-                return CustomScrollView(
-                  slivers: [
-                    SliverList(
-                      delegate: SliverChildBuilderDelegate(
-                        childCount: data.data?.length ?? 0,
-                        (context, index) {
-                          final attributes = data.data?[index].attributes;
-                          final businessData = data.data?[index];
+              (data, isLoading) {
+                if (data == null && isLoading) {
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                }
 
-                          if (attributes == null) return const SizedBox();
+                if (data == null) return Container();
 
-                          final primaryPhoto = data.included
-                              ?.firstWhere((e) =>
-                                  e.type == 'pu-photos' &&
-                                  e.id ==
-                                      businessData?.relationships?.primaryPhoto
-                                          ?.data?.id)
-                              .attributes
-                              ?.photo;
+                if (data.data?.isEmpty == true) {
+                  return const Text('Success but no data!');
+                }
 
-                          return BusinessCard(
-                            businessName: attributes.businessName ?? '',
-                            thumbnailUrl: primaryPhoto,
-                          );
-                        },
+                return PaginatedScrollWidget(
+                  businessData: data,
+                  isLoading: isLoading,
+                  onReachedBottom: () => context.read<BusinessCubit>().get(
+                        latitude:
+                            CoreConstants.defaultCoordinates.first.latitude ??
+                                0,
+                        longitude:
+                            CoreConstants.defaultCoordinates.first.longitude ??
+                                0,
                       ),
-                    ),
-                  ],
                 );
               },
+              initial: () => const Text('initial'),
+              error: (error) => Text('Error!!! :( $error'),
             );
           },
         ),

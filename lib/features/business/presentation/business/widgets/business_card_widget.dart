@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class BusinessCard extends StatelessWidget {
-  const BusinessCard({
+class BusinessCardWidget extends StatelessWidget {
+  const BusinessCardWidget({
     required this.businessName,
     required this.thumbnailUrl,
     super.key,

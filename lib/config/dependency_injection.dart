@@ -2,7 +2,6 @@ import 'package:get_it/get_it.dart';
 import 'package:http/http.dart' as http;
 import 'package:massagebook/features/business/data/data.dart';
 import 'package:massagebook/features/business/domain/domain.dart';
-import 'package:massagebook/features/business/presentation/presentation.dart';
 
 GetIt getIt = GetIt.instance;
 
@@ -14,7 +13,7 @@ class DependencyInjection {
         httpClient: http.Client(),
       ),
     );
-    getIt.registerFactory<BusinessRepository>(
+    getIt.registerFactory<BusinessesRepository>(
       () => BusinessesRepositoryImpl(
         remoteDataSource: getIt(),
       ),
@@ -23,11 +22,6 @@ class DependencyInjection {
       () => GetBusinessesDataUseCase(
         getIt(),
       ),
-    );
-    getIt.registerFactory<BusinessCubit>(
-      () => BusinessCubit(
-        getIt(),
-      )..get(),
     );
   }
 }

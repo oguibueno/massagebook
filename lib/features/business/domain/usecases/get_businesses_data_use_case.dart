@@ -5,9 +5,17 @@ import 'package:massagebook/features/business/domain/domain.dart';
 class GetBusinessesDataUseCase {
   GetBusinessesDataUseCase(this.businessesDataRepository);
 
-  final BusinessRepository businessesDataRepository;
+  final BusinessesRepository businessesDataRepository;
 
-  Future<Either<Failure, BusinessesData>> call(int offset) async {
-    return await businessesDataRepository.get(offset);
+  Future<Either<Failure, BusinessesData>> call({
+    required int page,
+    required double latitude,
+    required double longitude,
+  }) async {
+    return await businessesDataRepository.get(
+      page,
+      latitude,
+      longitude,
+    );
   }
 }

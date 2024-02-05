@@ -5,15 +5,23 @@ import 'package:massagebook/features/business/data/models/mappers/mappers.dart';
 import 'package:massagebook/features/business/domain/entities/entities.dart';
 import 'package:massagebook/features/business/domain/repositories/repositories.dart';
 
-class BusinessesRepositoryImpl implements BusinessRepository {
+class BusinessesRepositoryImpl implements BusinessesRepository {
   BusinessesRepositoryImpl({required this.remoteDataSource});
 
   final MassageBookRemoteDataSource remoteDataSource;
 
   @override
-  Future<Either<Failure, BusinessesData>> get(int offset) async {
+  Future<Either<Failure, BusinessesData>> get(
+    int offset,
+    double latitude,
+    double longitude,
+  ) async {
     try {
-      final data = await remoteDataSource.fetchBusinessesData(offset);
+      final data = await remoteDataSource.fetchBusinessesData(
+        offset,
+        latitude,
+        longitude,
+      );
       return Right(data.toEntity());
     } catch (e) {
       return Left(Failure(e.toString()));
