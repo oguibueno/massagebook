@@ -14,31 +14,22 @@ class BusinessCubit extends Cubit<BusinessState> {
   final GetBusinessesDataUseCase _getBusinessesDataUseCase;
 
   Future<void> get({
-    required double latitude,
-    required double longitude,
+    required Coordinates coordinates,
+    bool isFiltered = false,
   }) async {
     BusinessesData? currentState;
 
-    if (state is _BusinessState) {
+    if (state is _BusinessState && !isFiltered) {
       currentState = (state as _BusinessState).data;
     }
 
     emit(BusinessState(currentState, true));
 
-    // implement max pages mechanism
-
-    // final meta = currentState?.meta;
-
-    // if (meta != null) {
-    //   final lastPage = (meta.total! / meta.limit!);
-    // }
-
     final data = await _getBusinessesDataUseCase(
       page: currentState == null
           ? 0
           : (currentState.meta?.offset ?? 0) + (currentState.meta?.limit ?? 0),
-      latitude: latitude,
-      longitude: longitude,
+      coordinates: coordinates,
     );
 
     data.fold(

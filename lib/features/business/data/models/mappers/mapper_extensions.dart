@@ -86,6 +86,13 @@ extension CoordinatesToEntity on CoordinatesModel {
       );
 }
 
+extension CoordinatesToModel on Coordinates {
+  CoordinatesModel toModel() => CoordinatesModel(
+        latitudeModel: latitude ?? 0,
+        longitudeModel: longitude ?? 0,
+      );
+}
+
 extension WorkingHoursToEntity on WorkingHoursModel {
   WorkingHours toEntity() => WorkingHours(
         monday: mondayModel?.toEntity(),

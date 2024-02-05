@@ -5,7 +5,6 @@ import 'package:massagebook/features/business/domain/domain.dart';
 abstract class BusinessesRepository {
   Future<Either<Failure, BusinessesData>> get(
     int page,
-    double latitude,
-    double longitude,
+    Coordinates coordinates,
   );
 }

@@ -13,14 +13,12 @@ class BusinessesRepositoryImpl implements BusinessesRepository {
   @override
   Future<Either<Failure, BusinessesData>> get(
     int offset,
-    double latitude,
-    double longitude,
+    Coordinates coordinates,
   ) async {
     try {
       final data = await remoteDataSource.fetchBusinessesData(
         offset,
-        latitude,
-        longitude,
+        coordinates.toModel(),
       );
       return Right(data.toEntity());
     } catch (e) {
