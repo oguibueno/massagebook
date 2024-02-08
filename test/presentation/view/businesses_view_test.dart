@@ -111,7 +111,7 @@ void main() {
 
           // assert
           expect(
-            find.byKey(const Key('business_card_widget')),
+            find.byType(BusinessCardWidget),
             equals(findsOneWidget),
           );
         },
@@ -262,7 +262,7 @@ void main() {
           await tester.pumpWidget(makeTestableWidget(const BusinessesView()));
 
           await tester.drag(
-            find.byType(Card).first,
+            find.byType(BusinessCardWidget).first,
             const Offset(0, -300),
           );
 
