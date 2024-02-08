@@ -8,14 +8,6 @@ final GoRouter routerConfig = GoRouter(
       builder: (_, __) {
         return const BusinessesPage();
       },
-      // routes: [
-      //   GoRoute(
-      //     path: 'business-details',
-      //     builder: (_, __) {
-      //       return const BusinessDetailsScreen();
-      //     },
-      //   ),
-      // ],
     ),
   ],
 );

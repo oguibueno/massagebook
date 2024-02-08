@@ -9,8 +9,8 @@ class BusinessesPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => BusinessCubit(getIt())
+    return BlocProvider.value(
+      value: getIt<BusinessCubit>()
         ..get(coordinates: CoreConstants.defaultCities.first.coordinates!),
       child: const BusinessesView(),
     );
