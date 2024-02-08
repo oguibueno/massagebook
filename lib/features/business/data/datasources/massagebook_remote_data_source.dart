@@ -24,10 +24,6 @@ class MassageBookRemoteDataSourceImpl implements MassageBookRemoteDataSource {
     int offset,
     CoordinatesModel coordinates,
   ) async {
-    // String data = await rootBundle.loadString('lib/fixtures.json');
-    // final map = json.decode(data);
-    // return BusinessesDataModel.fromJson(map);
-
     final response = await httpClient.get(
       Uri.parse(
         '$_baseUrl&offset=$offset&filters=latitude==${coordinates.latitudeModel},longitude==${coordinates.longitudeModel}',

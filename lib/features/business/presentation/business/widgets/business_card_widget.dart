@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:massagebook/features/business/domain/domain.dart';
+import 'package:massagebook/features/business/presentation/presentation.dart';
 
 class BusinessCardWidget extends StatelessWidget {
   const BusinessCardWidget({
-    required this.businessName,
+    required this.dataAttributes,
     required this.thumbnailUrl,
     super.key,
   });
 
-  final String? businessName;
+  final DataAttributes? dataAttributes;
   final String? thumbnailUrl;
 
   @override
@@ -43,7 +45,7 @@ class BusinessCardWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    businessName ?? '',
+                    dataAttributes?.businessName ?? '',
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 18,
@@ -51,23 +53,20 @@ class BusinessCardWidget extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 10),
-                  const Text(
-                    'Opening Hours: 9 AM - 6 PM',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white, // Text color on top of the image
-                    ),
-                  ),
-                  const SizedBox(height: 10),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Row(
+                      Row(
                         children: [
-                          Icon(Icons.star, color: Colors.orange),
+                          dataAttributes?.rating?.rating != null
+                              ? RatingStarsWidget(
+                                  rating:
+                                      dataAttributes?.rating?.rating!.floor() ??
+                                          0)
+                              : Container(),
                           Text(
-                            '4.5',
-                            style: TextStyle(
+                            ' ${dataAttributes?.rating?.rating} (${dataAttributes?.rating?.reviewsCount ?? '0'})',
+                            style: const TextStyle(
                               fontWeight: FontWeight.bold,
                               color: Colors.white,
                             ),
@@ -75,8 +74,19 @@ class BusinessCardWidget extends StatelessWidget {
                         ],
                       ),
                       ElevatedButton(
-                        onPressed: () {},
-                        child: const Text('View Details'),
+                        onPressed: () {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text('Not implemented :('),
+                            ),
+                          );
+                        },
+                        child: Text(
+                          'View Details',
+                          style: TextStyle(
+                            color: Colors.teal[300],
+                          ),
+                        ),
                       ),
                     ],
                   ),

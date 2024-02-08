@@ -13,18 +13,9 @@ class BusinessesView extends StatefulWidget {
 }
 
 class _BusinessesViewState extends State<BusinessesView> {
-  late Coordinates _selectedFilter;
-
-  late Map<String, List<IncludedItem>> _filterOptions;
-
+  Coordinates _selectedFilter = CoreConstants.defaultCities.first.coordinates!;
+  Map<String, List<IncludedItem>> _filterOptions = {};
   String? _choosenCategoryId;
-
-  @override
-  void initState() {
-    super.initState();
-    _selectedFilter = CoreConstants.defaultCities.first.coordinates!;
-    context.read<BusinessCubit>().get(coordinates: _selectedFilter);
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,6 +31,7 @@ class _BusinessesViewState extends State<BusinessesView> {
               setState(() {
                 _selectedFilter = value;
                 _choosenCategoryId = null;
+                _filterOptions = {};
                 context.read<BusinessCubit>().get(
                       coordinates: _selectedFilter,
                       isFiltered: true,
@@ -64,15 +56,15 @@ class _BusinessesViewState extends State<BusinessesView> {
           return state.when(
             (data, isLoading) {
               if (data == null && isLoading) {
-                return const Center(
-                  child: CircularProgressIndicator(),
+                return Center(
+                  child: CircularProgressIndicator(
+                    color: Colors.teal[300],
+                  ),
                 );
               }
 
-              if (data == null) return Container();
-
-              if (data.data?.isEmpty == true) {
-                return const Text('Success but no data!');
+              if (data == null || data.data?.isEmpty == true) {
+                return const EmptyStateWidget();
               }
 
               final serviceCategories = data.included
@@ -102,8 +94,8 @@ class _BusinessesViewState extends State<BusinessesView> {
                 onReachedBottom: _onReachedBottom,
               );
             },
-            initial: () => const Text('initial'),
-            error: (error) => Text('Error!!! :( $error'),
+            initial: () => const InitialStateWidget(),
+            error: (_) => const ErrorStateWidget(),
           );
         },
       ),

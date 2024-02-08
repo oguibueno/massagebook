@@ -47,28 +47,29 @@ class PaginatedScrollWidget extends StatelessWidget {
                       ?.photo;
 
                   return BusinessCardWidget(
-                    businessName: attributes.businessName ?? '',
+                    dataAttributes: attributes,
                     thumbnailUrl: primaryPhoto,
                   );
                 }
 
-                return Container();
+                return const SizedBox(
+                  height: 50,
+                );
               },
             ),
           ),
           SliverList(
             delegate: SliverChildListDelegate(
               [
-                if (isLoading) const Center(child: CircularProgressIndicator()),
-              ],
-            ),
-          ),
-          SliverList(
-            delegate: SliverChildListDelegate(
-              [
-                const SizedBox(
-                  height: 50,
-                ),
+                if (isLoading)
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 20),
+                    child: Center(
+                      child: CircularProgressIndicator(
+                        color: Colors.teal[300],
+                      ),
+                    ),
+                  ),
               ],
             ),
           ),
